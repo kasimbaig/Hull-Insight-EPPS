@@ -39,9 +39,36 @@ export function CrudForm({
   const [isMaximized, setIsMaximized] = useState(false);
 
   useEffect(() => {
-    setFormData(data || {});
+    // Initialize form data with defaults for create mode
+    if (mode === 'create') {
+      const defaultData: any = {};
+      config.fields.forEach(field => {
+        if (field.type === 'checkbox') {
+          // Default checkbox fields to true for new records
+          // Special handling for active/enabled status fields
+          if (field.name === 'is_active' || 
+              field.name === 'active' || 
+              field.name.includes('active') || 
+              field.name.includes('enabled') ||
+              field.name.includes('status')) {
+            defaultData[field.name] = true;
+          } else {
+            // For other checkbox fields, check if there's existing data or default to false
+            defaultData[field.name] = data && data[field.name] !== undefined ? data[field.name] : false;
+          }
+        } else if (data && data[field.name] !== undefined) {
+          defaultData[field.name] = data[field.name];
+        }
+      });
+      setFormData(defaultData);
+      console.log('CrudForm: Initialized with defaults for create mode', defaultData);
+    } else {
+      // For edit/view mode, use the provided data
+      setFormData(data || {});
+      console.log('CrudForm: Initialized with provided data for edit/view mode', data);
+    }
     setValidationErrors({});
-  }, [data, visible]);
+  }, [data, visible, mode, config.fields]);
 
   const handleFieldChange = (fieldName: string, value: any) => {
     setFormData((prev: any) => ({
@@ -288,7 +315,7 @@ export function CrudForm({
             <div className="flex items-center gap-3 px-4 py-3 bg-background rounded-xl border-2 border-border transition-all duration-200 hover:border-[#00809D]/30 focus-within:border-[#00809D] focus-within:ring-2 focus-within:ring-[#00809D]/20">
               <div className="flex-shrink-0">
                 <Checkbox
-                  checked={value || false}
+                  checked={Boolean(value)}
                   onChange={(e) => handleFieldChange(field.name, e.checked)}
                   disabled={isReadOnly}
                   className={cn(
@@ -299,7 +326,13 @@ export function CrudForm({
                 />
               </div>
               <label className="font-medium text-sm text-foreground cursor-pointer flex-1">
-                {(field as any).checkboxLabel || 'Active'}
+                {(field as any).checkboxLabel || 
+                 (field.name === 'is_active' || field.name === 'active' ? 'Active Status' : 
+                  field.name.includes('active') ? 'Active' :
+                  field.name.includes('enabled') ? 'Enabled' :
+                  field.name.includes('critical') ? 'Critical' :
+                  field.name.includes('status') ? 'Status' :
+                  'Enable')}
               </label>
             </div>
             {hasError && (

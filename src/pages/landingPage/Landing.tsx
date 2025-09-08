@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Building2, Target, Zap, Rocket, TrendingUp, Database, Cpu, Globe2, ArrowRight, CheckCircle2, Award, Clock, MapPin, Phone, Mail, ExternalLink, Brain, Shield, Users, BarChart3, FileText, Settings, Navigation, Star, Sparkles, Ship, Compass, Waves, Anchor } from 'lucide-react';
+import { Building2, Target, Zap, Rocket, TrendingUp, Database, Cpu, Globe2, ArrowRight, CheckCircle2, Award, Clock, MapPin, Phone, Mail, ExternalLink, Brain, Shield, Users, BarChart3, FileText, Settings, Navigation, Star, Sparkles, Ship, Compass, Waves, Anchor, CheckCircle, Play } from 'lucide-react';
 import slide1 from '/assets/slide1.jpg';
 import slide2 from '/assets/slide2.jpg';
 import slide3 from '/assets/slide3.jpg';
@@ -44,12 +44,12 @@ const Landing = () => {
   ];
 
   const services = [
-    { title: "AI Intelligence", icon: <Brain className="w-8 h-8" /> },
-    { title: "Quantum Analytics", icon: <Cpu className="w-8 h-8" /> },
-    { title: "Neural Networks", icon: <Database className="w-8 h-8" /> },
-    { title: "Smart Systems", icon: <Zap className="w-8 h-8" /> },
-    { title: "Advanced Security", icon: <Shield className="w-8 h-8" /> },
-    { title: "Global Operations", icon: <Globe2 className="w-8 h-8" /> }
+    { title: "Navy", icon: <Ship className="w-8 h-8" /> },
+    { title: "Navy", icon: <Anchor className="w-8 h-8" /> },
+    { title: "Navy", icon: <Compass className="w-8 h-8" /> },
+    { title: "Navy", icon: <Waves className="w-8 h-8" /> },
+    { title: "Navy", icon: <Shield className="w-8 h-8" /> },
+    { title: "Navy", icon: <Navigation className="w-8 h-8" /> }
   ];
 
   return (
@@ -120,16 +120,16 @@ const Landing = () => {
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-gray-900 to-black">
         {/* Animated Background */}
         <div className="absolute inset-0">
-          {slides.map((slide, index) => (
-            <div
-              key={index}
+        {slides.map((slide, index) => (
+          <div
+            key={index}
               className={`absolute inset-0 transition-all duration-1000 ${
                 index === currentSlide ? 'opacity-100 scale-100' : 'opacity-0 scale-110'
-              }`}
-            >
-              <div 
-                className="w-full h-full bg-cover bg-center bg-no-repeat"
-                style={{ backgroundImage: `url(${slide.image})` }}
+            }`}
+          >
+            <div 
+              className="w-full h-full bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: `url(${slide.image})` }}
               />
               <div className="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-gray-900/60 to-black/80" />
             </div>
@@ -167,8 +167,8 @@ const Landing = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20">
-              <Button 
-                onClick={handleLoginClick}
+                  <Button 
+                    onClick={handleLoginClick}
                 className="bg-gradient-to-r from-[#00809D] via-cyan-500 to-blue-600 hover:from-[#00809D]/90 hover:via-cyan-400 hover:to-blue-500 text-white px-10 py-5 text-xl rounded-3xl shadow-2xl hover:shadow-[#00809D]/50 transition-all duration-300 transform hover:scale-110 font-bold group"
               >
                 <span className="flex items-center space-x-3">
@@ -176,7 +176,7 @@ const Landing = () => {
                   <span>Access Intelligence Portal</span>
                   <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
                 </span>
-              </Button>
+                  </Button>
             </div>
 
             {/* Advanced Stats Grid */}
@@ -203,11 +203,11 @@ const Landing = () => {
                 </div>
                 <div className="text-4xl font-black text-white mb-2">99.9%</div>
                 <div className="text-lg text-cyan-300 font-semibold">Precision Rate</div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-
+        
         {/* Slide Indicators */}
         <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex space-x-4">
           {slides.map((_, index) => (
@@ -234,109 +234,6 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* Futuristic Features Section */}
-      <section className="py-32 bg-gradient-to-b from-slate-900 via-gray-900 to-black relative overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#00809D]/5 via-transparent to-cyan-500/5"></div>
-          <div className="absolute top-20 right-20 w-64 h-64 bg-[#00809D]/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 left-20 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* Section Header */}
-          <div className="text-center mb-20">
-            <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-[#00809D]/20 to-cyan-500/20 backdrop-blur-xl border border-[#00809D]/30 text-white text-sm font-bold mb-8 group">
-              <Cpu className="w-5 h-5 mr-3 group-hover:rotate-12 transition-transform duration-300" />
-              Advanced Capabilities
-            </div>
-            <h2 className="text-5xl md:text-7xl font-black text-white mb-8 leading-tight">
-              Next-Generation Naval
-              <span className="block bg-gradient-to-r from-[#00809D] via-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                Intelligence Systems
-              </span>
-            </h2>
-            <p className="text-2xl text-gray-300 max-w-4xl mx-auto font-light leading-relaxed">
-              Revolutionary AI-powered solutions designed to transform naval operations and enhance fleet management efficiency through cutting-edge technology
-            </p>
-          </div>
-
-          {/* Features Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Feature 1 */}
-            <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-10 shadow-2xl hover:shadow-[#00809D]/20 transition-all duration-500 hover:-translate-y-4 border border-white/20 hover:border-[#00809D]/50">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#00809D]/10 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <div className="relative z-10">
-                <div className="w-20 h-20 bg-gradient-to-br from-[#00809D] via-cyan-500 to-blue-600 rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-2xl">
-                  <Brain className="w-10 h-10 text-white" />
-                </div>
-                
-                <h3 className="text-3xl font-black text-white mb-6 group-hover:text-cyan-300 transition-colors duration-300">
-                  AI-Powered Analytics
-                </h3>
-                
-                <p className="text-gray-300 leading-relaxed mb-8 text-lg">
-                  Advanced machine learning algorithms provide comprehensive hull maintenance planning with predictive modeling and real-time intelligence for optimal vessel performance.
-                </p>
-                
-                <div className="flex items-center text-cyan-400 font-bold text-lg group-hover:translate-x-3 transition-transform duration-300">
-                  <span>Explore Technology</span>
-                  <ArrowRight className="w-6 h-6 ml-3 group-hover:scale-125 transition-transform duration-300" />
-                </div>
-              </div>
-            </div>
-
-            {/* Feature 2 */}
-            <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-10 shadow-2xl hover:shadow-[#00809D]/20 transition-all duration-500 hover:-translate-y-4 border border-white/20 hover:border-[#00809D]/50">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#00809D]/10 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <div className="relative z-10">
-                <div className="w-20 h-20 bg-gradient-to-br from-[#00809D] via-cyan-500 to-blue-600 rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-2xl">
-                  <Zap className="w-10 h-10 text-white" />
-                </div>
-                
-                <h3 className="text-3xl font-black text-white mb-6 group-hover:text-cyan-300 transition-colors duration-300">
-                  Quantum Processing
-                </h3>
-                
-                <p className="text-gray-300 leading-relaxed mb-8 text-lg">
-                  Revolutionary quantum computing solutions including AI-powered defect detection, automated reporting systems, and real-time monitoring capabilities for naval operations.
-                </p>
-                
-                <div className="flex items-center text-cyan-400 font-bold text-lg group-hover:translate-x-3 transition-transform duration-300">
-                  <span>Discover Innovation</span>
-                  <ArrowRight className="w-6 h-6 ml-3 group-hover:scale-125 transition-transform duration-300" />
-                </div>
-              </div>
-            </div>
-
-            {/* Feature 3 */}
-            <div className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-10 shadow-2xl hover:shadow-[#00809D]/20 transition-all duration-500 hover:-translate-y-4 border border-white/20 hover:border-[#00809D]/50">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#00809D]/10 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <div className="relative z-10">
-                <div className="w-20 h-20 bg-gradient-to-br from-[#00809D] via-cyan-500 to-blue-600 rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-2xl">
-                  <Database className="w-10 h-10 text-white" />
-                </div>
-                
-                <h3 className="text-3xl font-black text-white mb-6 group-hover:text-cyan-300 transition-colors duration-300">
-                  Neural Networks
-                </h3>
-                
-                <p className="text-gray-300 leading-relaxed mb-8 text-lg">
-                  Advanced neural network systems with comprehensive tracking, resource allocation, and milestone management for efficient naval maintenance operations.
-                </p>
-                
-                <div className="flex items-center text-cyan-400 font-bold text-lg group-hover:translate-x-3 transition-transform duration-300">
-                  <span>Learn More</span>
-                  <ArrowRight className="w-6 h-6 ml-3 group-hover:scale-125 transition-transform duration-300" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Modern About Section */}
       <section id="about" className="py-24 bg-white relative overflow-hidden">
@@ -376,74 +273,24 @@ const Landing = () => {
                 </p>
               </div>
 
-              {/* Feature List */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {[
-                  { name: "AI Life Cycle Management", icon: <Brain className="w-4 h-4" /> },
-                  { name: "Digital Intelligence Reports", icon: <Cpu className="w-4 h-4" /> },
-                  { name: "Quantum Unified Domain", icon: <Database className="w-4 h-4" /> },
-                  { name: "Neural Memory Systems", icon: <Zap className="w-4 h-4" /> }
-                ].map((feature, index) => (
-                  <div key={index} className="flex items-center space-x-3 p-4 bg-white rounded-xl border border-gray-100 hover:border-[#00809D]/20 transition-colors duration-300 group">
-                    <div className="w-8 h-8 bg-gradient-to-br from-[#00809D]/10 to-cyan-500/10 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      {feature.icon}
-                    </div>
-                    <span className="text-gray-700 font-medium group-hover:text-[#00809D] transition-colors duration-300">{feature.name}</span>
-                  </div>
-                ))}
-              </div>
 
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button 
-                  onClick={handleLoginClick}
-                  className="bg-gradient-to-r from-[#00809D] via-cyan-500 to-blue-600 hover:from-[#00809D]/90 hover:via-cyan-400 hover:to-blue-500 text-white px-8 py-4 text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group font-semibold"
-                >
-                  <span className="flex items-center space-x-2">
-                    <Rocket className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
-                    <span>Launch Portal</span>
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                  </span>
-                </Button>
-                
-              </div>
             </div>
 
-            {/* Right Visual */}
+            {/* Right Visual - Slide1 Image */}
             <div className="relative">
-              {/* Main Card */}
-              <div className="relative bg-gradient-to-br from-[#00809D] via-cyan-500 to-blue-600 rounded-3xl p-8 shadow-2xl">
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center">
-                  <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Brain className="w-10 h-10 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-white mb-2">AI Intelligence</h3>
-                  <p className="text-white/80 text-sm">Advanced Naval Management System</p>
-                </div>
-              </div>
-
-              {/* Floating Stats Cards */}
-              <div className="absolute -top-4 -right-4 bg-white rounded-2xl p-6 shadow-xl border border-gray-100">
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#00809D]/10 to-cyan-500/10 rounded-xl flex items-center justify-center">
-                    <TrendingUp className="w-6 h-6 text-[#00809D]" />
-                  </div>
-                  <div>
-                    <div className="text-2xl font-bold text-gray-900">500+</div>
-                    <div className="text-sm text-gray-600">AI Vessels</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="absolute -bottom-4 -left-4 bg-white rounded-2xl p-6 shadow-xl border border-gray-100">
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#00809D]/10 to-cyan-500/10 rounded-xl flex items-center justify-center">
-                    <Zap className="w-6 h-6 text-[#00809D]" />
-                  </div>
-                  <div>
-                    <div className="text-2xl font-bold text-gray-900">24/7</div>
-                    <div className="text-sm text-gray-600">AI Monitoring</div>
-                  </div>
+              <div className="relative group">
+                {/* Decorative Border with Gradient */}
+                <div className="absolute -inset-4 bg-gradient-to-r from-[#00809D] via-cyan-500 to-blue-600 rounded-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
+                <div className="absolute -inset-2 bg-gradient-to-r from-[#00809D] via-cyan-500 to-blue-600 rounded-xl opacity-40 group-hover:opacity-50 transition-opacity duration-500"></div>
+                
+                {/* Main Image */}
+                <div className="relative rounded-xl overflow-hidden shadow-2xl">
+                  <img 
+                    src={slide1} 
+                    alt="Hull Insight" 
+                    className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
               </div>
             </div>
@@ -462,11 +309,11 @@ const Landing = () => {
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#00809D]/10 text-[#00809D] text-sm font-medium mb-6">
               <Settings className="w-4 h-4 mr-2" />
               Our Services
-            </div>
+              </div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               Comprehensive Naval
               <span className="block text-[#00809D]">Management Solutions</span>
-            </h2>
+              </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Advanced technology solutions designed to streamline naval operations and enhance fleet management efficiency
             </p>
@@ -483,7 +330,7 @@ const Landing = () => {
                 <div className="w-16 h-16 bg-gradient-to-br from-[#00809D] to-[#00809D]/80 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <div className="text-white">
                       {service.icon}
-                  </div>
+                    </div>
                 </div>
 
                 {/* Content */}
@@ -508,39 +355,6 @@ const Landing = () => {
             ))}
           </div>
 
-          {/* Bottom CTA */}
-          <div className="bg-gradient-to-r from-[#00809D] to-[#00809D]/90 rounded-3xl p-12 text-center text-white relative overflow-hidden">
-            {/* Background Pattern */}
-            <div className="absolute inset-0 opacity-50">
-              <div className="absolute inset-0" style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='white' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-                backgroundRepeat: 'repeat'
-              }}></div>
-            </div>
-            
-            <div className="relative z-10">
-              <h3 className="text-3xl md:text-4xl font-bold mb-4">
-                Ready to Transform Your Naval Operations?
-              </h3>
-              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-                Join hundreds of naval organizations already using Hull Insight to streamline their operations and enhance efficiency.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button 
-                  onClick={handleLoginClick}
-                  className="bg-white text-[#00809D] hover:bg-gray-50 px-8 py-4 text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group font-semibold"
-                >
-                  <span className="flex items-center space-x-2">
-                    <Shield className="w-5 h-5" />
-                    <span>Get Started Now</span>
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                  </span>
-                </Button>
-                
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -589,8 +403,8 @@ const Landing = () => {
                       <h4 className="font-semibold text-gray-900 mb-1">Phone</h4>
                       <p className="text-gray-600">NHQ-DNA-HULLINSIGHT</p>
                     <p className="text-gray-600">PAX: 6063, 6099</p>
-                    </div>
                   </div>
+                </div>
 
                   <div className="flex items-center space-x-4">
                     <div className="w-12 h-12 bg-gradient-to-br from-[#00809D]/10 to-cyan-500/10 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -604,9 +418,9 @@ const Landing = () => {
                       >
                         Send Email
                   </Button>
-                    </div>
-                  </div>
                 </div>
+              </div>
+            </div>
               </div>
             </div>
 
@@ -632,7 +446,7 @@ const Landing = () => {
                     <div className="text-sm text-white/80">Visitors</div>
                   </div>
                 </div>
-              </div>
+                </div>
 
               <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100">
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Quick Links</h3>

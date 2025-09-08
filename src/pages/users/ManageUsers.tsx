@@ -14,26 +14,25 @@ import { useToast } from "@/hooks/use-toast";
 
 interface User {
   id: number;
-  last_login: string | null;
   loginname: string;
   email: string;
   first_name: string;
   last_name: string;
   status: number;
-  hrcdf_designation: string | null;
-  hrcdf_desig?: string | null; // For form compatibility
-  rankCode: string | null;
-  rankName: string | null;
-  created_on: string;
   phone_no: string | null;
   unit: number | null;
   vessel: number | null;
-  process: number | null;
   role: number | null;
-  user_role?: number; // For form compatibility
   role_name: string | null;
+  created_on: string;
+  last_login: string | null;
+  hrcdf_designation: string | null;
+  rankCode: string | null;
+  rankName: string | null;
+  process: number | null;
   process_name: string | null;
-  ad_user?: string | boolean; // For form compatibility
+  unit_name: string | null;
+  vessel_name: string | null;
 }
 
 interface ApiResponse {
@@ -62,6 +61,12 @@ export default function ManageUsers() {
   const [currentPage, setCurrentPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
+  // Dropdown data states
+  const [units, setUnits] = useState<{ id: number; name: string }[]>([]);
+  const [vessels, setVessels] = useState<{ id: number; name: string }[]>([]);
+  const [processes, setProcesses] = useState<{ id: number; name: string }[]>([]);
+  const [roles, setRoles] = useState<{ id: number; name: string }[]>([]);
+
   const [formVisible, setFormVisible] = useState(false);
   const [viewDetailsVisible, setViewDetailsVisible] = useState(false);
   const [deleteDialogVisible, setDeleteDialogVisible] = useState(false);
@@ -72,6 +77,75 @@ export default function ManageUsers() {
 
   const { toast } = useToast();
   const toastRef = useRef<Toast>(null);
+
+  // Load dropdown data from APIs
+  const loadUnits = useCallback(async () => {
+    try {
+      const response = await getRequest('master/units/');
+      let unitsData = [];
+      if (response && response.results && Array.isArray(response.results)) {
+        unitsData = response.results;
+      } else if (response && Array.isArray(response)) {
+        unitsData = response;
+      } else if (response && response.data && Array.isArray(response.data)) {
+        unitsData = response.data;
+      }
+      setUnits(unitsData);
+    } catch (error: unknown) {
+      console.error('Error loading units:', error);
+    }
+  }, []);
+
+  const loadVessels = useCallback(async () => {
+    try {
+      const response = await getRequest('master/vessels/');
+      let vesselsData = [];
+      if (response && response.results && Array.isArray(response.results)) {
+        vesselsData = response.results;
+      } else if (response && Array.isArray(response)) {
+        vesselsData = response;
+      } else if (response && response.data && Array.isArray(response.data)) {
+        vesselsData = response.data;
+      }
+      setVessels(vesselsData);
+    } catch (error: unknown) {
+      console.error('Error loading vessels:', error);
+    }
+  }, []);
+
+  const loadProcesses = useCallback(async () => {
+    try {
+      const response = await getRequest('access/processes/');
+      let processesData = [];
+      if (response && response.results && Array.isArray(response.results)) {
+        processesData = response.results;
+      } else if (response && Array.isArray(response)) {
+        processesData = response;
+      } else if (response && response.data && Array.isArray(response.data)) {
+        processesData = response.data;
+      }
+      setProcesses(processesData);
+    } catch (error: unknown) {
+      console.error('Error loading processes:', error);
+    }
+  }, []);
+
+  const loadRoles = useCallback(async () => {
+    try {
+      const response = await getRequest('access/user-roles/');
+      let rolesData = [];
+      if (response && response.results && Array.isArray(response.results)) {
+        rolesData = response.results;
+      } else if (response && Array.isArray(response)) {
+        rolesData = response;
+      } else if (response && response.data && Array.isArray(response.data)) {
+        rolesData = response.data;
+      }
+      setRoles(rolesData);
+    } catch (error: unknown) {
+      console.error('Error loading roles:', error);
+    }
+  }, []);
 
   // Load users from API
   const loadUsers = useCallback(async (page = 0, search = '') => {
@@ -91,17 +165,22 @@ export default function ManageUsers() {
         
         let filteredUsers = userData;
         
-        // Apply search filter if provided
-        if (search) {
-          filteredUsers = userData.filter(user => 
-            user.loginname.toLowerCase().includes(search.toLowerCase()) ||
-            user.email.toLowerCase().includes(search.toLowerCase()) ||
-            user.first_name.toLowerCase().includes(search.toLowerCase()) ||
-            user.last_name.toLowerCase().includes(search.toLowerCase()) ||
-            (user.role_name && user.role_name.toLowerCase().includes(search.toLowerCase())) ||
-            (user.process_name && user.process_name.toLowerCase().includes(search.toLowerCase()))
-          );
-        }
+         // Apply search filter if provided
+         if (search) {
+           filteredUsers = userData.filter(user => 
+             user.loginname.toLowerCase().includes(search.toLowerCase()) ||
+             user.email.toLowerCase().includes(search.toLowerCase()) ||
+             user.first_name.toLowerCase().includes(search.toLowerCase()) ||
+             user.last_name.toLowerCase().includes(search.toLowerCase()) ||
+             (user.role_name && user.role_name.toLowerCase().includes(search.toLowerCase())) ||
+             (user.process_name && user.process_name.toLowerCase().includes(search.toLowerCase())) ||
+             (user.vessel_name && user.vessel_name.toLowerCase().includes(search.toLowerCase())) ||
+             (user.unit_name && user.unit_name.toLowerCase().includes(search.toLowerCase())) ||
+             (user.rankCode && user.rankCode.toLowerCase().includes(search.toLowerCase())) ||
+             (user.rankName && user.rankName.toLowerCase().includes(search.toLowerCase())) ||
+             (user.hrcdf_designation && user.hrcdf_designation.toLowerCase().includes(search.toLowerCase()))
+           );
+         }
         
         // Apply pagination
         const startIndex = page * rowsPerPage;
@@ -131,10 +210,14 @@ export default function ManageUsers() {
     }
   }, [rowsPerPage, toast]);
 
-  // Load users on component mount
+  // Load data on component mount
   useEffect(() => {
     loadUsers();
-  }, [loadUsers]);
+    loadUnits();
+    loadVessels();
+    loadProcesses();
+    loadRoles();
+  }, [loadUsers, loadUnits, loadVessels, loadProcesses, loadRoles]);
 
   const userFormConfig: FormConfig = {
     title: "User",
@@ -146,7 +229,7 @@ export default function ManageUsers() {
         label: "First Name",
         type: "text",
         required: true,
-        placeholder: "e.g., John",
+        placeholder: "Enter first name",
         section: "Basic Information",
         validation: { min: 2, max: 50, message: "First name must be between 2-50 characters" }
       },
@@ -155,7 +238,7 @@ export default function ManageUsers() {
         label: "Last Name",
         type: "text",
         required: true,
-        placeholder: "e.g., Doe",
+        placeholder: "Enter last name",
         section: "Basic Information",
         validation: { min: 2, max: 50, message: "Last name must be between 2-50 characters" }
       },
@@ -164,18 +247,9 @@ export default function ManageUsers() {
         label: "Login Name",
         type: "text",
         required: true,
-        placeholder: "e.g., john.doe",
+        placeholder: "Enter login name",
         section: "Basic Information",
         validation: { min: 3, max: 30, message: "Login name must be between 3-30 characters" }
-      },
-      {
-        name: "email",
-        label: "Email",
-        type: "email",
-        required: true,
-        placeholder: "e.g., john.doe@example.com",
-        section: "Basic Information",
-        validation: { pattern: "^[^@]+@[^@]+\\.[^@]+$", message: "Please enter a valid email address" }
       },
       {
         name: "password",
@@ -187,64 +261,85 @@ export default function ManageUsers() {
         validation: { min: 6, message: "Password must be at least 6 characters" }
       },
       {
-        name: "phone_no",
-        label: "Phone Number",
-        type: "text",
-        required: false,
-        placeholder: "e.g., +1234567890",
-        section: "Basic Information"
-      },
-      {
-        name: "user_role",
-        label: "User Role",
-        type: "number",
+        name: "email",
+        label: "Email",
+        type: "email",
         required: true,
-        placeholder: "e.g., 2",
-        section: "Role & Process Information",
-        validation: { min: 1, message: "Please select a valid role" }
+        placeholder: "Enter email address",
+        section: "Basic Information",
+        validation: { pattern: "^[^@]+@[^@]+\\.[^@]+$", message: "Please enter a valid email address" }
       },
+       {
+         name: "phone_no",
+         label: "Phone Number",
+         type: "text",
+         required: false,
+         placeholder: "Enter phone number",
+         section: "Basic Information"
+       },
+       {
+         name: "rankCode",
+         label: "Rank Code",
+         type: "text",
+         required: false,
+         placeholder: "Enter rank code",
+         section: "Basic Information"
+       },
+       {
+         name: "rankName",
+         label: "Rank Name",
+         type: "text",
+         required: false,
+         placeholder: "Enter rank name",
+         section: "Basic Information"
+       },
+       {
+         name: "hrcdf_designation",
+         label: "HRCDF Designation",
+         type: "text",
+         required: false,
+         placeholder: "Enter HRCDF designation",
+         section: "Basic Information"
+       },
       {
         name: "unit",
         label: "Unit",
-        type: "number",
+        type: "select",
         required: true,
-        placeholder: "e.g., 1",
+        placeholder: "Select a unit",
         section: "Role & Process Information",
-        validation: { min: 1, message: "Please select a valid unit" }
+        options: units.map(unit => ({ label: unit.name, value: unit.id }))
       },
       {
-        name: "hrcdf_desig",
-        label: "HRCDF Designation",
-        type: "text",
+        name: "vessel",
+        label: "Vessel",
+        type: "select",
         required: false,
-        placeholder: "e.g., Manager",
-        section: "Role & Process Information"
+        placeholder: "Select a vessel",
+        section: "Role & Process Information",
+        options: vessels.map(vessel => ({ label: vessel.name, value: vessel.id }))
       },
       {
-        name: "rankCode",
-        label: "Rank Code",
-        type: "text",
+        name: "process",
+        label: "Process",
+        type: "select",
         required: false,
-        placeholder: "e.g., CAPT",
-        section: "Role & Process Information"
+        placeholder: "Select a process",
+        section: "Role & Process Information",
+        options: processes.map(process => ({ label: process.name, value: process.id }))
       },
       {
-        name: "rankName",
-        label: "Rank Name",
-        type: "text",
-        required: false,
-        placeholder: "e.g., Captain",
-        section: "Role & Process Information"
+        name: "role",
+        label: "Role",
+        type: "select",
+        required: true,
+        placeholder: "Select a role",
+        section: "Role & Process Information",
+        options: roles.map(role => ({ label: role.name, value: role.id }))
       },
       {
         name: "status",
         label: "Active Status",
-        type: "checkbox",
-        section: "Additional Information"
-      },
-      {
-        name: "ad_user",
-        label: "AD User",
         type: "checkbox",
         section: "Additional Information"
       }
@@ -259,24 +354,26 @@ export default function ManageUsers() {
       { key: 'email', label: 'Email', type: 'text' as const },
       { key: 'first_name', label: 'First Name', type: 'text' as const },
       { key: 'last_name', label: 'Last Name', type: 'text' as const },
-      { key: 'phone_no', label: 'Phone Number', type: 'text' as const },
+       { key: 'phone_no', label: 'Phone Number', type: 'text' as const },
+       { key: 'rankCode', label: 'Rank Code', type: 'text' as const },
+       { key: 'rankName', label: 'Rank Name', type: 'text' as const },
+       { key: 'hrcdf_designation', label: 'HRCDF Designation', type: 'text' as const },
       { key: 'role_name', label: 'Role', type: 'text' as const },
+      { key: 'unit', label: 'Unit', type: 'text' as const },
+      { key: 'vessel', label: 'Vessel', type: 'text' as const },
       { key: 'process_name', label: 'Process', type: 'text' as const },
-      { key: 'rankCode', label: 'Rank Code', type: 'text' as const },
-      { key: 'rankName', label: 'Rank Name', type: 'text' as const },
-      { key: 'hrcdf_designation', label: 'HRCDF Designation', type: 'text' as const },
       { key: 'status', label: 'Status', type: 'boolean' as const },
       { key: 'last_login', label: 'Last Login', type: 'date' as const },
       { key: 'created_on', label: 'Created On', type: 'date' as const }
     ],
     sections: [
-      {
-        title: 'Basic Information',
-        fields: ['loginname', 'email', 'first_name', 'last_name', 'phone_no']
-      },
+       {
+         title: 'Basic Information',
+         fields: ['loginname', 'email', 'first_name', 'last_name', 'phone_no', 'rankCode', 'rankName', 'hrcdf_designation']
+       },
       {
         title: 'Role & Process Information',
-        fields: ['role_name', 'process_name', 'rankCode', 'rankName', 'hrcdf_designation']
+        fields: ['role_name', 'unit', 'vessel', 'process_name']
       },
       {
         title: 'Status & Activity',
@@ -306,21 +403,22 @@ export default function ManageUsers() {
     try {
       if (formMode === 'create') {
         // Send user data for create
-        const payload = {
-          first_name: formData.first_name as string,
-          last_name: formData.last_name as string,
-          loginname: formData.loginname as string,
-          email: formData.email as string,
-          password: formData.password as string,
-          user_role: formData.user_role as number,
-          hrcdf_desig: formData.hrcdf_desig as string || "",
-          unit: formData.unit as number,
-          status: 1,
-          ad_user: formData.ad_user ? "true" : "false",
-          rankCode: formData.rankCode as string || "",
-          rankName: formData.rankName as string || "",
-          phone_no: formData.phone_no as string || null
-        };
+         const payload = {
+           first_name: formData.first_name as string,
+           last_name: formData.last_name as string,
+           loginname: formData.loginname as string,
+           password: formData.password as string,
+           email: formData.email as string,
+           phone_no: formData.phone_no as string || null,
+           rankCode: formData.rankCode as string || null,
+           rankName: formData.rankName as string || null,
+           hrcdf_designation: formData.hrcdf_designation as string || null,
+           unit: formData.unit as number,
+           vessel: formData.vessel as number || null,
+           process: formData.process as number || null,
+           role: formData.role as number,
+           status: formData.status ? 1 : 0
+         };
         await postRequest('api/auth/users/', payload);
         toast({
           title: "Success",
@@ -328,23 +426,24 @@ export default function ManageUsers() {
         });
       } else if (formMode === 'edit' && selectedUser) {
         // Send user data for edit using PUT method
-        const payload = {
-          first_name: formData.first_name as string,
-          last_name: formData.last_name as string,
-          loginname: formData.loginname as string,
-          email: formData.email as string,
-          user_role: formData.user_role as number,
-          hrcdf_desig: formData.hrcdf_desig as string || "",
-          unit: formData.unit as number,
-          status: 1,
-          ad_user: formData.ad_user ? "true" : "false",
-          rankCode: formData.rankCode as string || "",
-          rankName: formData.rankName as string || "",
-          phone_no: formData.phone_no as string || null
-        };
+         const payload = {
+           first_name: formData.first_name as string,
+           last_name: formData.last_name as string,
+           loginname: formData.loginname as string,
+           email: formData.email as string,
+           phone_no: formData.phone_no as string || null,
+           rankCode: formData.rankCode as string || null,
+           rankName: formData.rankName as string || null,
+           hrcdf_designation: formData.hrcdf_designation as string || null,
+           unit: formData.unit as number,
+           vessel: formData.vessel as number || null,
+           process: formData.process as number || null,
+           role: formData.role as number,
+           status: formData.status ? 1 : 0
+         };
         // Only include password if it's provided (for edit mode)
         if (formData.password) {
-          (payload as any).password = formData.password as string;
+          (payload as Record<string, unknown>).password = formData.password as string;
         }
         await putRequest(`api/auth/users/${selectedUser.id}/`, payload);
         toast({
@@ -479,17 +578,22 @@ export default function ManageUsers() {
     if (allUsers.length > 0) {
       let filteredUsers = allUsers;
       
-      // Apply search filter if provided
-      if (value) {
-        filteredUsers = allUsers.filter(user => 
-          user.loginname.toLowerCase().includes(value.toLowerCase()) ||
-          user.email.toLowerCase().includes(value.toLowerCase()) ||
-          user.first_name.toLowerCase().includes(value.toLowerCase()) ||
-          user.last_name.toLowerCase().includes(value.toLowerCase()) ||
-          (user.role_name && user.role_name.toLowerCase().includes(value.toLowerCase())) ||
-          (user.process_name && user.process_name.toLowerCase().includes(value.toLowerCase()))
-        );
-      }
+       // Apply search filter if provided
+       if (value) {
+         filteredUsers = allUsers.filter(user => 
+           user.loginname.toLowerCase().includes(value.toLowerCase()) ||
+           user.email.toLowerCase().includes(value.toLowerCase()) ||
+           user.first_name.toLowerCase().includes(value.toLowerCase()) ||
+           user.last_name.toLowerCase().includes(value.toLowerCase()) ||
+           (user.role_name && user.role_name.toLowerCase().includes(value.toLowerCase())) ||
+           (user.process_name && user.process_name.toLowerCase().includes(value.toLowerCase())) ||
+           (user.vessel_name && user.vessel_name.toLowerCase().includes(value.toLowerCase())) ||
+           (user.unit_name && user.unit_name.toLowerCase().includes(value.toLowerCase())) ||
+           (user.rankCode && user.rankCode.toLowerCase().includes(value.toLowerCase())) ||
+           (user.rankName && user.rankName.toLowerCase().includes(value.toLowerCase())) ||
+           (user.hrcdf_designation && user.hrcdf_designation.toLowerCase().includes(value.toLowerCase()))
+         );
+       }
       
       // Apply pagination
       const startIndex = 0;
@@ -556,17 +660,22 @@ export default function ManageUsers() {
             if (allUsers.length > 0) {
               let filteredUsers = allUsers;
               
-              // Apply search filter if provided
-              if (globalFilter) {
-                filteredUsers = allUsers.filter(user => 
-                  user.loginname.toLowerCase().includes(globalFilter.toLowerCase()) ||
-                  user.email.toLowerCase().includes(globalFilter.toLowerCase()) ||
-                  user.first_name.toLowerCase().includes(globalFilter.toLowerCase()) ||
-                  user.last_name.toLowerCase().includes(globalFilter.toLowerCase()) ||
-                  (user.role_name && user.role_name.toLowerCase().includes(globalFilter.toLowerCase())) ||
-                  (user.process_name && user.process_name.toLowerCase().includes(globalFilter.toLowerCase()))
-                );
-              }
+               // Apply search filter if provided
+               if (globalFilter) {
+                 filteredUsers = allUsers.filter(user => 
+                   user.loginname.toLowerCase().includes(globalFilter.toLowerCase()) ||
+                   user.email.toLowerCase().includes(globalFilter.toLowerCase()) ||
+                   user.first_name.toLowerCase().includes(globalFilter.toLowerCase()) ||
+                   user.last_name.toLowerCase().includes(globalFilter.toLowerCase()) ||
+                   (user.role_name && user.role_name.toLowerCase().includes(globalFilter.toLowerCase())) ||
+                   (user.process_name && user.process_name.toLowerCase().includes(globalFilter.toLowerCase())) ||
+                   (user.vessel_name && user.vessel_name.toLowerCase().includes(globalFilter.toLowerCase())) ||
+                   (user.unit_name && user.unit_name.toLowerCase().includes(globalFilter.toLowerCase())) ||
+                   (user.rankCode && user.rankCode.toLowerCase().includes(globalFilter.toLowerCase())) ||
+                   (user.rankName && user.rankName.toLowerCase().includes(globalFilter.toLowerCase())) ||
+                   (user.hrcdf_designation && user.hrcdf_designation.toLowerCase().includes(globalFilter.toLowerCase()))
+                 );
+               }
               
               // Apply pagination
               const startIndex = e.page * rowsPerPage;
@@ -591,18 +700,55 @@ export default function ManageUsers() {
             className="min-w-[200px]"
             headerClassName="master-table-header"
           />
-          <Column 
-            field="email" 
-            header="Email" 
-            className="min-w-[200px]"
-            headerClassName="master-table-header"
-          />
-          <Column 
-            body={roleBodyTemplate} 
-            header="Role & Process" 
-            className="min-w-[180px]"
-            headerClassName="master-table-header"
-          />
+           <Column 
+             field="email" 
+             header="Email" 
+             className="min-w-[200px]"
+             headerClassName="master-table-header"
+           />
+           <Column 
+             field="phone_no" 
+             header="Phone" 
+             className="min-w-[120px]"
+             headerClassName="master-table-header"
+             body={(rowData: User) => rowData.phone_no || '-'}
+           />
+           <Column 
+             body={roleBodyTemplate} 
+             header="Role & Process" 
+             className="min-w-[180px]"
+             headerClassName="master-table-header"
+           />
+           <Column 
+             body={(rowData: User) => (
+               <div className="flex flex-col">
+                 {rowData.rankCode && (
+                   <span className="text-sm font-medium">{rowData.rankCode}</span>
+                 )}
+                 {rowData.rankName && (
+                   <span className="text-xs text-muted-foreground">{rowData.rankName}</span>
+                 )}
+                 {!rowData.rankCode && !rowData.rankName && (
+                   <span className="text-muted-foreground">-</span>
+                 )}
+               </div>
+             )} 
+             header="Rank" 
+             className="min-w-[120px]"
+             headerClassName="master-table-header"
+           />
+           <Column 
+             body={(rowData: User) => rowData.unit_name || '-'} 
+             header="Unit" 
+             className="min-w-[100px]"
+             headerClassName="master-table-header"
+           />
+           <Column 
+             body={(rowData: User) => rowData.vessel_name || '-'} 
+             header="Vessel" 
+             className="min-w-[150px]"
+             headerClassName="master-table-header"
+           />
           <Column 
             body={lastLoginBodyTemplate} 
             header="Last Login" 
