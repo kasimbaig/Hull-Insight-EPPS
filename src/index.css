@@ -1,0 +1,274 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hull Insight Design System - Maritime Management */
+
+@layer base {
+  :root {
+    /* Hull Insight Color Palette */
+    --hull-navy: 210 78% 16%;           /* #0A1F44 - Primary Navy */
+    --hull-golden: 46 50% 94%;          /* #F5F2E7 - Golden White */
+    --hull-alert: 352 74% 51%;          /* #D72638 - Alert Red */
+    --hull-neutral: 210 22% 97%;        /* #F7F9FB - Neutral BG */
+    --hull-success: 134 61% 41%;        /* #28A745 - Success Green */
+    --hull-warning: 45 100% 51%;        /* #FFC107 - Warning Yellow */
+    
+    /* Semantic Token Mapping */
+    --background: var(--hull-neutral);
+    --foreground: var(--hull-navy);
+
+    --card: 0 0% 100%;
+    --card-foreground: var(--hull-navy);
+
+    --popover: 0 0% 100%;
+    --popover-foreground: var(--hull-navy);
+
+    --primary: var(--hull-navy);
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: var(--hull-golden);
+    --secondary-foreground: var(--hull-navy);
+
+    --muted: var(--hull-golden);
+    --muted-foreground: 210 15% 55%;
+
+    --accent: var(--hull-golden);
+    --accent-foreground: var(--hull-navy);
+
+    --destructive: var(--hull-alert);
+    --destructive-foreground: 0 0% 100%;
+
+    --success: var(--hull-success);
+    --success-foreground: 0 0% 100%;
+
+    --warning: var(--hull-warning);
+    --warning-foreground: var(--hull-navy);
+
+    --border: 210 20% 90%;
+    --input: 210 20% 95%;
+    --ring: var(--hull-navy);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: var(--hull-navy);
+    --foreground: var(--hull-golden);
+
+    --card: 210 65% 12%;
+    --card-foreground: var(--hull-golden);
+
+    --popover: var(--hull-navy);
+    --popover-foreground: var(--hull-golden);
+
+    --primary: var(--hull-golden);
+    --primary-foreground: var(--hull-navy);
+
+    --secondary: 210 30% 20%;
+    --secondary-foreground: var(--hull-golden);
+
+    --muted: 210 30% 18%;
+    --muted-foreground: 210 15% 70%;
+
+    --accent: 210 30% 20%;
+    --accent-foreground: var(--hull-golden);
+
+    --destructive: var(--hull-alert);
+    --destructive-foreground: var(--hull-golden);
+
+    --success: var(--hull-success);
+    --success-foreground: 0 0% 100%;
+
+    --warning: var(--hull-warning);
+    --warning-foreground: var(--hull-navy);
+
+    --border: 210 30% 25%;
+    --input: 210 30% 22%;
+    --ring: var(--hull-golden);
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+  }
+
+  /* Maritime Design System Utilities */
+  .hull-card {
+    @apply bg-card rounded-2xl border border-border shadow-sm;
+  }
+
+  .hull-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary) / 0.8));
+  }
+
+  .hull-shadow {
+    box-shadow: 0 4px 16px -4px hsl(var(--primary) / 0.1);
+  }
+
+  .hull-transition {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  /* Enhanced Sidebar Styles */
+  .sidebar-enhanced {
+    background: #00809D;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .sidebar-item-active {
+    background: rgba(255, 255, 255, 0.2);
+    border-left: 4px solid #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .sidebar-item-hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(2px);
+  }
+
+  .sidebar-icon-container {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .sidebar-icon-container-active {
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+  }
+}
+
+@layer components {
+  /* Maritime Status Indicators */
+  .status-approved {
+    @apply bg-success/10 text-success border border-success/20 rounded-lg px-3 py-1 text-sm font-medium;
+  }
+  
+  .status-pending {
+    @apply bg-warning/10 text-warning border border-warning/20 rounded-lg px-3 py-1 text-sm font-medium;
+  }
+  
+  .status-rejected {
+    @apply bg-destructive/10 text-destructive border border-destructive/20 rounded-lg px-3 py-1 text-sm font-medium;
+  }
+
+  .status-draft {
+    @apply bg-muted text-muted-foreground border border-border rounded-lg px-3 py-1 text-sm font-medium;
+  }
+
+  /* PrimeReact Dropdown Styling */
+  .p-dropdown-panel {
+    @apply bg-background border border-border shadow-lg rounded-xl z-50 !important;
+  }
+  
+  .p-dropdown-items {
+    @apply bg-background !important;
+  }
+  
+  .p-dropdown-item {
+    @apply text-foreground hover:bg-accent hover:text-accent-foreground px-4 py-3 !important;
+  }
+  
+  .p-multiselect-panel {
+    @apply bg-background border border-border shadow-lg rounded-xl z-50 !important;
+  }
+  
+  .p-multiselect-items {
+    @apply bg-background !important;
+  }
+  
+  .p-multiselect-item {
+    @apply text-foreground hover:bg-accent hover:text-accent-foreground px-4 py-3 !important;
+  }
+
+  /* DataTable Header Styling */
+  .p-datatable .p-datatable-thead > tr > th {
+    @apply bg-primary text-primary-foreground font-semibold border-primary/20 !important;
+  }
+  
+  .p-datatable .p-datatable-tbody > tr > td {
+    @apply border-border !important;
+  }
+  
+  .p-datatable .p-datatable-tbody > tr:nth-child(odd) {
+    @apply bg-muted/30 !important;
+  }
+  
+  .p-datatable .p-datatable-tbody > tr:hover {
+    @apply bg-accent/50 !important;
+  }
+  
+  /* Vessel Master Table Styling */
+  .vessel-datatable .p-datatable-header {
+    @apply bg-[#E6F7FF] text-[#00809D] border-0 !important;
+  }
+  
+  .vessel-datatable .p-datatable-thead > tr > th {
+    @apply bg-[#E6F7FF] text-[#00809D] font-semibold border-t-2 border-b-2 border-r border-[#00809D] !important;
+  }
+  
+  .vessel-datatable .p-datatable-thead > tr > th:last-child {
+    @apply border-r-0 !important;
+  }
+  
+  .vessel-datatable .p-datatable-tbody > tr > td {
+    @apply border-b border-r border-border/50 py-4 !important;
+  }
+  
+  .vessel-datatable .p-datatable-tbody > tr > td:last-child {
+    @apply border-r-0 !important;
+  }
+  
+  .vessel-datatable .p-datatable-tbody > tr:nth-child(even) {
+    @apply bg-muted/20 !important;
+  }
+  
+  .vessel-datatable .p-datatable-tbody > tr:hover {
+    @apply bg-[#00809D]/5 !important;
+  }
+  
+  .vessel-datatable .p-datatable-table {
+    @apply border border-[#00809D] !important;
+  }
+  
+  .vessel-datatable .p-paginator {
+    @apply bg-muted/30 border-t border-border !important;
+  }
+  
+  .vessel-datatable .p-paginator .p-paginator-page {
+    @apply hover:bg-[#00809D]/10 hover:text-[#00809D] !important;
+  }
+  
+  .vessel-datatable .p-paginator .p-paginator-page.p-highlight {
+    @apply bg-[#00809D] text-white !important;
+  }
+}
