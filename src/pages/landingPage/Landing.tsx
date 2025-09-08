@@ -180,31 +180,25 @@ const Landing = () => {
             </div>
 
             {/* Advanced Stats Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
               <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/20 hover:border-[#00809D]/50 transition-all duration-300 group">
-                <div className="w-16 h-16 bg-gradient-to-br from-[#00809D] to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <TrendingUp className="w-8 h-8 text-white" />
-                </div>
-                <div className="text-4xl font-black text-white mb-2">500+</div>
+               
+                <div className="text-2xl font-black text-white mb-2">500+</div>
                 <div className="text-lg text-cyan-300 font-semibold">Active Vessels</div>
               </div>
               
               <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/20 hover:border-[#00809D]/50 transition-all duration-300 group">
-                <div className="w-16 h-16 bg-gradient-to-br from-[#00809D] to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <Zap className="w-8 h-8 text-white" />
-                </div>
-                <div className="text-4xl font-black text-white mb-2">24/7</div>
+               
+                <div className="text-2xl font-black text-white mb-2">24/7</div>
                 <div className="text-lg text-cyan-300 font-semibold">AI Monitoring</div>
               </div>
               
               <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/20 hover:border-[#00809D]/50 transition-all duration-300 group">
-                <div className="w-16 h-16 bg-gradient-to-br from-[#00809D] to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <Award className="w-8 h-8 text-white" />
-                </div>
-                <div className="text-4xl font-black text-white mb-2">99.9%</div>
+               
+                <div className="text-2xl font-black text-white mb-2">99.9%</div>
                 <div className="text-lg text-cyan-300 font-semibold">Precision Rate</div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         
