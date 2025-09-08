@@ -238,7 +238,7 @@ export default function Login() {
         {/* Footer */}
         <div className="text-center mt-8">
           <p className="text-sm text-gray-500">
-            © 2024 Hull Insight. All rights reserved.
+            © 2025 Hull Insight. All rights reserved.
           </p>
         </div>
 
