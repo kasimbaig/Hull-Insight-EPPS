@@ -107,6 +107,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       setUser(null);
       localStorage.removeItem('authData');
       localStorage.removeItem('rememberMe');
+      // The ProtectedRoute will automatically redirect to landing page
     }
   };
 

@@ -49,9 +49,9 @@ apiClient.interceptors.response.use(
       localStorage.removeItem('authData');
       // Remove auth header
       delete apiClient.defaults.headers.common['Authorization'];
-      // Only redirect if we're not already on the login page
-      if (window.location.pathname !== '/login') {
-        window.location.href = '/login';
+      // Only redirect if we're not already on the landing page
+      if (window.location.pathname !== '/') {
+        window.location.href = '/';
       }
     } else if (error.code === 'NETWORK_ERROR' || error.message === 'Network Error') {
       // Handle network errors gracefully - don't redirect to login

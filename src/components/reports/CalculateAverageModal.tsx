@@ -76,14 +76,25 @@ const CalculateAverageModal: React.FC<CalculateAverageModalProps> = ({
       ? numericValues.reduce((sum, val) => sum + val, 0) / numericValues.length 
       : 0;
     
+    // Round to 2 decimal places
+    const roundedAverage = Math.round(average * 100) / 100;
+    
     setAverages(prev => ({
       ...prev,
-      [field]: average
+      [field]: roundedAverage
     }));
   };
 
   const handleSave = () => {
-    onSave(averages);
+    // Ensure all averages are rounded to 2 decimal places before saving
+    const roundedAverages = {
+      airFlow: Math.round(averages.airFlow * 100) / 100,
+      flowRate: Math.round(averages.flowRate * 100) / 100,
+      designValue: Math.round(averages.designValue * 100) / 100,
+      measuredValue: Math.round(averages.measuredValue * 100) / 100
+    };
+    
+    onSave(roundedAverages);
     onHide();
   };
 

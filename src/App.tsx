@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import { MainLayout } from "@/components/layout/MainLayout";
 import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import Login from "@/pages/Login";
+import Landing from "@/pages/landingPage/Landing";
 
 // PrimeReact CSS imports
 import "primereact/resources/themes/lara-light-blue/theme.css";
@@ -30,10 +31,10 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =
     );
   }
 
-  // If not authenticated after loading is complete, redirect to login
+  // If not authenticated after loading is complete, redirect to landing page
   if (!isAuthenticated) {
-    console.log('User not authenticated, redirecting to login');
-    return <Navigate to="/login" replace />;
+    console.log('User not authenticated, redirecting to landing page');
+    return <Navigate to="/" replace />;
   }
 
   return <>{children}</>;
@@ -74,16 +75,16 @@ const App = () => (
           <Sonner />
           <Routes>
             <Route 
+              path="/" 
+              element={<Landing />}
+            />
+            <Route 
               path="/login" 
               element={
                 <PublicRoute>
                   <Login />
                 </PublicRoute>
               } 
-            />
-            <Route 
-              path="/" 
-              element={<Navigate to="/dashboards" replace />}
             />
             <Route 
               path="/dashboards" 
