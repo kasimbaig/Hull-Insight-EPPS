@@ -11,6 +11,7 @@ const Landing = () => {
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
     setIsVisible(true);
@@ -21,8 +22,41 @@ const Landing = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // Scroll detection for active navigation
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['home', 'about', 'services', 'contact'];
+      const scrollPosition = window.scrollY + 100; // Offset for better detection
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const handleLoginClick = () => {
     navigate('/login');
+  };
+
+  const handleNavClick = (sectionId: string) => {
+    setActiveSection(sectionId);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
   };
 
   const slides = [
@@ -75,30 +109,66 @@ const Landing = () => {
 
             {/* Navigation */}
             <nav className="hidden lg:flex items-center space-x-2">
-              <a href="#home" className="px-6 py-3 text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300 group">
+              <button 
+                onClick={() => handleNavClick('home')}
+                className={`px-6 py-3 text-sm font-semibold rounded-xl transition-all duration-300 group ${
+                  activeSection === 'home' 
+                    ? 'text-white bg-gradient-to-r from-[#00809D] to-cyan-500 shadow-lg shadow-[#00809D]/30' 
+                    : 'text-gray-300 hover:text-white hover:bg-white/10'
+                }`}
+              >
                 <span className="flex items-center space-x-2">
-                  <Target className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
+                  <Target className={`w-4 h-4 transition-transform duration-300 ${
+                    activeSection === 'home' ? 'scale-110' : 'group-hover:scale-110'
+                  }`} />
                   <span>Home</span>
                 </span>
-              </a>
-              <a href="#about" className="px-6 py-3 text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300 group">
+              </button>
+              <button 
+                onClick={() => handleNavClick('about')}
+                className={`px-6 py-3 text-sm font-semibold rounded-xl transition-all duration-300 group ${
+                  activeSection === 'about' 
+                    ? 'text-white bg-gradient-to-r from-[#00809D] to-cyan-500 shadow-lg shadow-[#00809D]/30' 
+                    : 'text-gray-300 hover:text-white hover:bg-white/10'
+                }`}
+              >
                 <span className="flex items-center space-x-2">
-                  <Database className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
+                  <Database className={`w-4 h-4 transition-transform duration-300 ${
+                    activeSection === 'about' ? 'scale-110' : 'group-hover:scale-110'
+                  }`} />
                   <span>About</span>
                 </span>
-              </a>
-              <a href="#services" className="px-6 py-3 text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300 group">
+              </button>
+              <button 
+                onClick={() => handleNavClick('services')}
+                className={`px-6 py-3 text-sm font-semibold rounded-xl transition-all duration-300 group ${
+                  activeSection === 'services' 
+                    ? 'text-white bg-gradient-to-r from-[#00809D] to-cyan-500 shadow-lg shadow-[#00809D]/30' 
+                    : 'text-gray-300 hover:text-white hover:bg-white/10'
+                }`}
+              >
                 <span className="flex items-center space-x-2">
-                  <Cpu className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
+                  <Cpu className={`w-4 h-4 transition-transform duration-300 ${
+                    activeSection === 'services' ? 'scale-110' : 'group-hover:scale-110'
+                  }`} />
                   <span>Services</span>
                 </span>
-              </a>
-              <a href="#contact" className="px-6 py-3 text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300 group">
+              </button>
+              <button 
+                onClick={() => handleNavClick('contact')}
+                className={`px-6 py-3 text-sm font-semibold rounded-xl transition-all duration-300 group ${
+                  activeSection === 'contact' 
+                    ? 'text-white bg-gradient-to-r from-[#00809D] to-cyan-500 shadow-lg shadow-[#00809D]/30' 
+                    : 'text-gray-300 hover:text-white hover:bg-white/10'
+                }`}
+              >
                 <span className="flex items-center space-x-2">
-                  <Globe2 className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
+                  <Globe2 className={`w-4 h-4 transition-transform duration-300 ${
+                    activeSection === 'contact' ? 'scale-110' : 'group-hover:scale-110'
+                  }`} />
                   <span>Contact</span>
                 </span>
-              </a>
+              </button>
             </nav>
 
             {/* Login Button */}
@@ -499,10 +569,10 @@ const Landing = () => {
             <div>
               <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
               <ul className="space-y-2">
-                <li><a href="#home" className="text-gray-400 hover:text-white transition-colors">Home</a></li>
-                <li><a href="#about" className="text-gray-400 hover:text-white transition-colors">About</a></li>
-                <li><a href="#services" className="text-gray-400 hover:text-white transition-colors">Services</a></li>
-                <li><a href="#contact" className="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                <li><button onClick={() => handleNavClick('home')} className="text-gray-400 hover:text-white transition-colors">Home</button></li>
+                <li><button onClick={() => handleNavClick('about')} className="text-gray-400 hover:text-white transition-colors">About</button></li>
+                <li><button onClick={() => handleNavClick('services')} className="text-gray-400 hover:text-white transition-colors">Services</button></li>
+                <li><button onClick={() => handleNavClick('contact')} className="text-gray-400 hover:text-white transition-colors">Contact</button></li>
               </ul>
             </div>
 
