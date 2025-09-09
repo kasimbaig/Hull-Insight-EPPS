@@ -252,61 +252,7 @@ export default function Dashboard() {
         ))}
       </div>
 
-      {/* Charts Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Fleet Trend Bar Chart */}
-        <Card className="p-6 bg-gradient-to-br from-background to-muted/20 border-l-4 border-l-[#8B3A3A] transition-all duration-500">
-          <h2 className="text-xl font-semibold text-foreground mb-6">
-            Fleet Trend ({selectedPeriod === '7d' ? 'Last 7 Days' : selectedPeriod === '30d' ? 'Last 4 Weeks' : 'Last 3 Months'})
-          </h2>
-          <ResponsiveContainer width="100%" height={320}>
-            <BarChart data={barData} key={selectedPeriod}>
-              <XAxis dataKey="month" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="Operational" fill="#8B3A3A" radius={[4, 4, 0, 0]} />
-              <Bar dataKey="Maintenance" fill="#00A8CC" radius={[4, 4, 0, 0]} />
-              <Bar dataKey="Repair" fill="#4ECDC4" radius={[4, 4, 0, 0]} />
-            </BarChart>
-          </ResponsiveContainer>
-        </Card>
-
-        {/* Fleet Distribution Pie Chart */}
-        <Card className="p-6 bg-gradient-to-br from-background to-muted/20 border-l-4 border-l-[#4ECDC4] transition-all duration-500">
-          <h2 className="text-xl font-semibold text-foreground mb-6">Vessel Status Distribution</h2>
-          <ResponsiveContainer width="100%" height={320}>
-            <PieChart key={selectedPeriod}>
-              <Pie
-                data={pieData}
-                dataKey="value"
-                nameKey="name"
-                cx="50%"
-                cy="45%"
-                outerRadius={90}
-                fill="#8B3A3A"
-                label={({ name, value }) => `${name}: ${value}`}
-                labelLine={false}
-              >
-                {pieData.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={COLORS[index]} />
-                ))}
-              </Pie>
-              <Tooltip 
-                formatter={(value: any, name: any) => [`${value}`, name]}
-                labelStyle={{ color: '#8B3A3A', fontWeight: 'bold' }}
-              />
-              <Legend 
-                verticalAlign="bottom" 
-                height={36}
-                formatter={(value) => <span style={{ color: '#8B3A3A', fontWeight: 'bold' }}>{value}</span>}
-              />
-            </PieChart>
-          </ResponsiveContainer>
-        </Card>
-      </div>
-
-      {/* New Charts Section */}
+      {/* First Row: Fleet Status Distribution and Hull Operations Trend */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Fleet Status Donut Chart */}
         <Card className="p-6 bg-gradient-to-br from-background to-muted/20 border-l-4 border-l-[#45B7D1] transition-all duration-500">
@@ -397,6 +343,60 @@ export default function Dashboard() {
                 name="Repairs"
               />
             </LineChart>
+          </ResponsiveContainer>
+        </Card>
+      </div>
+
+      {/* Second Row: Fleet Trend and Vessel Distribution */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Fleet Trend Bar Chart */}
+        <Card className="p-6 bg-gradient-to-br from-background to-muted/20 border-l-4 border-l-[#8B3A3A] transition-all duration-500">
+          <h2 className="text-xl font-semibold text-foreground mb-6">
+            Fleet Trend ({selectedPeriod === '7d' ? 'Last 7 Days' : selectedPeriod === '30d' ? 'Last 4 Weeks' : 'Last 3 Months'})
+          </h2>
+          <ResponsiveContainer width="100%" height={320}>
+            <BarChart data={barData} key={selectedPeriod}>
+              <XAxis dataKey="month" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="Operational" fill="#8B3A3A" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="Maintenance" fill="#00A8CC" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="Repair" fill="#4ECDC4" radius={[4, 4, 0, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
+        </Card>
+
+        {/* Vessel Distribution Pie Chart */}
+        <Card className="p-6 bg-gradient-to-br from-background to-muted/20 border-l-4 border-l-[#4ECDC4] transition-all duration-500">
+          <h2 className="text-xl font-semibold text-foreground mb-6">Vessel Distribution</h2>
+          <ResponsiveContainer width="100%" height={320}>
+            <PieChart key={selectedPeriod}>
+              <Pie
+                data={pieData}
+                dataKey="value"
+                nameKey="name"
+                cx="50%"
+                cy="45%"
+                outerRadius={90}
+                fill="#8B3A3A"
+                label={({ name, value }) => `${name}: ${value}`}
+                labelLine={false}
+              >
+                {pieData.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={COLORS[index]} />
+                ))}
+              </Pie>
+              <Tooltip 
+                formatter={(value: any, name: any) => [`${value}`, name]}
+                labelStyle={{ color: '#8B3A3A', fontWeight: 'bold' }}
+              />
+              <Legend 
+                verticalAlign="bottom" 
+                height={36}
+                formatter={(value) => <span style={{ color: '#8B3A3A', fontWeight: 'bold' }}>{value}</span>}
+              />
+            </PieChart>
           </ResponsiveContainer>
         </Card>
       </div>
