@@ -194,10 +194,10 @@ export function AppSidebar() {
 
   return (
     <div 
-      className={`shadow-xl transition-all duration-300 flex-shrink-0 bg-[#00809D] h-screen flex flex-col`}
+      className={`shadow-xl transition-all duration-300 flex-shrink-0 bg-[#8B3A3A] h-screen flex flex-col`}
       style={{ width: sidebarWidth }}
     >
-      <div className={`${collapsed ? 'p-2' : 'p-6'} border-b border-sidebar-border bg-[#00809D] relative`}>
+      <div className={`${collapsed ? 'p-2' : 'p-6'} border-b border-sidebar-border bg-[#8B3A3A] relative`}>
         <div className={`flex items-center ${collapsed ? 'justify-between' : 'gap-3'}`}>
           <div className={`${collapsed ? 'w-8 h-8' : 'w-10 h-10'} bg-gradient-to-br from-primary to-primary/80 rounded-xl flex items-center justify-center shadow-md`}>
             <Ship className={`${collapsed ? 'w-5 h-5' : 'w-6 h-6'} text-white`} />

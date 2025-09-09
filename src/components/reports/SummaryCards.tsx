@@ -26,9 +26,9 @@ export const SummaryCards = ({ data, loadingStates, onRefreshTotalTrials, onRefr
           <div className="flex items-center justify-between">
             <div className="min-w-0 flex-1">
               <p className="text-sm font-medium text-muted-foreground">Total Reports</p>
-              <p className="text-2xl font-bold text-[#00809D]">{totalReportsCount}</p>
+              <p className="text-2xl font-bold text-[#8B3A3A]">{totalReportsCount}</p>
             </div>
-            <FileText className="h-8 w-8 text-[#00809D] flex-shrink-0" />
+            <FileText className="h-8 w-8 text-[#8B3A3A] flex-shrink-0" />
           </div>
         </CardContent>
       </Card>
@@ -44,12 +44,12 @@ export const SummaryCards = ({ data, loadingStates, onRefreshTotalTrials, onRefr
                   variant="outline"
                   onClick={onRefreshHvacReports || onRefreshTotalTrials}
                   disabled={loadingStates.hvac || loadingStates.totalTrials}
-                  className="h-6 px-2 text-xs hover:bg-[#00809D]/10"
+                  className="h-6 px-2 text-xs hover:bg-[#8B3A3A]/10"
                 >
                   <RefreshCw className={`h-3 w-3 ${(loadingStates.hvac || loadingStates.totalTrials) ? 'animate-spin' : ''}`} />
                 </Button>
               </div>
-              <p className="text-2xl font-bold text-[#00809D]">
+              <p className="text-2xl font-bold text-[#8B3A3A]">
                 {loadingStates.hvac ? "..." : hvacTrialsCount}
               </p>
               {hvacReport && hvacReport.trials.length > 0 && (
@@ -63,7 +63,7 @@ export const SummaryCards = ({ data, loadingStates, onRefreshTotalTrials, onRefr
                 </p>
               )}
             </div>
-            <BarChart3 className="h-8 w-8 text-[#00809D] flex-shrink-0" />
+            <BarChart3 className="h-8 w-8 text-[#8B3A3A] flex-shrink-0" />
           </div>
         </CardContent>
       </Card>
@@ -73,9 +73,9 @@ export const SummaryCards = ({ data, loadingStates, onRefreshTotalTrials, onRefr
           <div className="flex items-center justify-between">
             <div className="min-w-0 flex-1">
               <p className="text-sm font-medium text-muted-foreground">Docking Reports</p>
-              <p className="text-2xl font-bold text-[#00809D]">{dockingReports.length}</p>
+              <p className="text-2xl font-bold text-[#8B3A3A]">{dockingReports.length}</p>
             </div>
-            <Ship className="h-8 w-8 text-[#00809D] flex-shrink-0" />
+            <Ship className="h-8 w-8 text-[#8B3A3A] flex-shrink-0" />
           </div>
         </CardContent>
       </Card>
@@ -85,9 +85,9 @@ export const SummaryCards = ({ data, loadingStates, onRefreshTotalTrials, onRefr
           <div className="flex items-center justify-between">
             <div className="min-w-0 flex-1">
               <p className="text-sm font-medium text-muted-foreground">Survey Reports</p>
-              <p className="text-2xl font-bold text-[#00809D]">{surveyReports.length}</p>
+              <p className="text-2xl font-bold text-[#8B3A3A]">{surveyReports.length}</p>
             </div>
-            <Calendar className="h-8 w-8 text-[#00809D] flex-shrink-0" />
+            <Calendar className="h-8 w-8 text-[#8B3A3A] flex-shrink-0" />
           </div>
         </CardContent>
       </Card>

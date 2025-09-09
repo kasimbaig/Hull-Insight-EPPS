@@ -99,12 +99,12 @@ export function ViewDetailsForm({
       }}
       className="hull-card border-0 shadow-2xl"
       modal
-      headerClassName="p-0 m-0 bg-[#00809D] rounded-t-2xl text-[#00809D]"
+      headerClassName="p-0 m-0 bg-[#8B3A3A] rounded-t-2xl text-[#8B3A3A]"
       draggable={false}
       resizable={false}
       contentClassName="p-0"
     >
-      <div className="bg-[#00809D] text-white p-6">
+      <div className="bg-[#8B3A3A] text-white p-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
@@ -140,8 +140,8 @@ export function ViewDetailsForm({
           sections.map((section, sectionIndex) => (
             <div key={section.title} className="space-y-4">
               <div className="flex items-center gap-3 pb-3 border-b border-border">
-                <div className="w-8 h-8 bg-[#00809D]/10 rounded-lg flex items-center justify-center">
-                  <span className="text-[#00809D] font-bold text-sm">{sectionIndex + 1}</span>
+                <div className="w-8 h-8 bg-[#8B3A3A]/10 rounded-lg flex items-center justify-center">
+                  <span className="text-[#8B3A3A] font-bold text-sm">{sectionIndex + 1}</span>
                 </div>
                 <h3 className="text-lg font-semibold text-foreground">{section.title}</h3>
               </div>

@@ -25,7 +25,7 @@ export const ReportFiltersComponent = ({
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <Filter className="h-5 w-5 text-[#00809D]" />
+          <Filter className="h-5 w-5 text-[#8B3A3A]" />
           Filters
         </CardTitle>
       </CardHeader>
@@ -59,7 +59,7 @@ export const ReportFiltersComponent = ({
                 variant="outline"
                 onClick={onRefreshVessels}
                 disabled={loadingStates.vessels}
-                className="h-7 px-2 text-xs hover:bg-[#00809D]/10"
+                className="h-7 px-2 text-xs hover:bg-[#8B3A3A]/10"
               >
                 <RefreshCw className={`h-3 w-3 mr-1 ${loadingStates.vessels ? 'animate-spin' : ''}`} />
                 Refresh

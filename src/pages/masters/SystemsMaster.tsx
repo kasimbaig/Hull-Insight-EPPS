@@ -241,13 +241,13 @@ export default function SystemsMaster() {
         <Button
           icon={<Eye className="h-4 w-4" />}
           onClick={() => openViewDetails(rowData)}
-          className="p-button-text p-button-rounded w-8 h-8 hover:bg-[#00809D]/10 hover:text-[#00809D] transition-all duration-200"
+          className="p-button-text p-button-rounded w-8 h-8 hover:bg-[#8B3A3A]/10 hover:text-[#8B3A3A] transition-all duration-200"
           tooltip="View Details"
         />
         <Button
           icon={<Edit className="h-4 w-4" />}
           onClick={() => openForm('edit', rowData)}
-          className="p-button-text p-button-rounded w-8 h-8 hover:bg-[#00809D]/10 hover:text-[#00809D] transition-all duration-200"
+          className="p-button-text p-button-rounded w-8 h-8 hover:bg-[#8B3A3A]/10 hover:text-[#8B3A3A] transition-all duration-200"
           tooltip="Edit"
         />
         <Button
@@ -287,10 +287,10 @@ export default function SystemsMaster() {
   };
 
   const header = (
-    <div className="flex flex-wrap gap-4 items-center justify-between p-6 bg-gradient-to-r from-[#00809D]/5 to-[#00809D]/10 rounded-xl border border-[#00809D]/20">
+    <div className="flex flex-wrap gap-4 items-center justify-between p-6 bg-gradient-to-r from-[#8B3A3A]/5 to-[#8B3A3A]/10 rounded-xl border border-[#8B3A3A]/20">
       <div className="flex items-center gap-6">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-[#00809D] rounded-lg flex items-center justify-center">
+          <div className="w-10 h-10 bg-[#8B3A3A] rounded-lg flex items-center justify-center">
             <span className="text-white text-lg">⚙️</span>
           </div>
           <div>
@@ -306,7 +306,7 @@ export default function SystemsMaster() {
               value={globalFilter}
               onChange={(e) => handleSearch(e.target.value)}
               placeholder="Search systems, names, codes..."
-              className="w-80 pl-10 pr-4 py-3 border-2 border-border rounded-xl focus:border-[#00809D] focus:ring-2 focus:ring-[#00809D]/20 bg-background transition-all duration-200"
+              className="w-80 pl-10 pr-4 py-3 border-2 border-border rounded-xl focus:border-[#8B3A3A] focus:ring-2 focus:ring-[#8B3A3A]/20 bg-background transition-all duration-200"
             />
           </div>
         </div>
@@ -316,7 +316,7 @@ export default function SystemsMaster() {
         icon={<Plus className="h-4 w-4" />}
         label="Add System"
         onClick={() => openForm('create')}
-        className="bg-[#00809D] text-white hover:bg-[#00809D]/90 px-6 py-3 rounded-xl font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+        className="bg-[#8B3A3A] text-white hover:bg-[#8B3A3A]/90 px-6 py-3 rounded-xl font-semibold shadow-md hover:shadow-lg transition-all duration-200"
       />
     </div>
   );

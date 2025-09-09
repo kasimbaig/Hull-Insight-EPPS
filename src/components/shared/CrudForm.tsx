@@ -141,7 +141,7 @@ export function CrudForm({
               onChange={(e) => handleFieldChange(field.name, e.target.value)}
               placeholder={field.placeholder}
               className={cn(
-                "w-full px-4 py-3 border-2 border-border rounded-xl hull-transition focus:border-[#00809D] focus:ring-2 focus:ring-[#00809D]/20 bg-background",
+                "w-full px-4 py-3 border-2 border-border rounded-xl hull-transition focus:border-[#8B3A3A] focus:ring-2 focus:ring-[#8B3A3A]/20 bg-background",
                 hasError && "border-destructive focus:border-destructive focus:ring-destructive/20",
                 isReadOnly && "bg-muted border-muted-foreground/20 text-muted-foreground"
               )}
@@ -198,7 +198,7 @@ export function CrudForm({
               onChange={(e) => handleFieldChange(field.name, e.target.value)}
               placeholder={field.placeholder}
               className={cn(
-                "w-full px-4 py-3 border-2 border-border rounded-xl hull-transition focus:border-[#00809D] focus:ring-2 focus:ring-[#00809D]/20 bg-background resize-none",
+                "w-full px-4 py-3 border-2 border-border rounded-xl hull-transition focus:border-[#8B3A3A] focus:ring-2 focus:ring-[#8B3A3A]/20 bg-background resize-none",
                 hasError && "border-destructive focus:border-destructive focus:ring-destructive/20",
                 isReadOnly && "bg-muted border-muted-foreground/20 text-muted-foreground"
               )}
@@ -255,7 +255,7 @@ export function CrudForm({
               value={value || ''}
               onChange={(e) => handleFieldChange(field.name, e.target.value)}
               className={cn(
-                "w-full px-4 py-3 border-2 border-border rounded-xl hull-transition focus:border-[#00809D] focus:ring-2 focus:ring-[#00809D]/20 bg-background",
+                "w-full px-4 py-3 border-2 border-border rounded-xl hull-transition focus:border-[#8B3A3A] focus:ring-2 focus:ring-[#8B3A3A]/20 bg-background",
                 hasError && "border-destructive focus:border-destructive focus:ring-destructive/20",
                 isReadOnly && "bg-muted border-muted-foreground/20 text-muted-foreground"
               )}
@@ -312,7 +312,7 @@ export function CrudForm({
             <label className="block font-semibold text-sm mb-2 text-foreground">
               {field.label} {field.required && <span className="text-destructive ml-1">*</span>}
             </label>
-            <div className="flex items-center gap-3 px-4 py-3 bg-background rounded-xl border-2 border-border transition-all duration-200 hover:border-[#00809D]/30 focus-within:border-[#00809D] focus-within:ring-2 focus-within:ring-[#00809D]/20">
+            <div className="flex items-center gap-3 px-4 py-3 bg-background rounded-xl border-2 border-border transition-all duration-200 hover:border-[#8B3A3A]/30 focus-within:border-[#8B3A3A] focus-within:ring-2 focus-within:ring-[#8B3A3A]/20">
               <div className="flex-shrink-0">
                 <Checkbox
                   checked={Boolean(value)}
@@ -321,7 +321,7 @@ export function CrudForm({
                   className={cn(
                     "w-6 h-5 border-2 border-border rounded transition-all duration-200",
                     hasError && "border-destructive",
-                    !isReadOnly && "hover:border-[#00809D] focus:border-[#00809D] focus:ring-2 focus:ring-[#00809D]/20"
+                    !isReadOnly && "hover:border-[#8B3A3A] focus:border-[#8B3A3A] focus:ring-2 focus:ring-[#8B3A3A]/20"
                   )}
                 />
               </div>
@@ -351,7 +351,7 @@ export function CrudForm({
             <label className="block font-semibold text-sm mb-2 text-foreground">
               {field.label} {field.required && <span className="text-destructive ml-1">*</span>}
             </label>
-            <div className="border-2 border-dashed border-border rounded-xl p-6 hull-transition hover:border-[#00809D]/50 bg-muted/20">
+            <div className="border-2 border-dashed border-border rounded-xl p-6 hull-transition hover:border-[#8B3A3A]/50 bg-muted/20">
               <FileUpload
                 mode="basic"
                 name={field.name}
@@ -397,13 +397,13 @@ export function CrudForm({
       header={null}
       style={{ width: isMaximized ? '95vw' : '80vw', maxWidth: isMaximized ? 'none' : '1200px' }}
       className="hull-card border-0 shadow-2xl"
-      headerClassName="p-0 m-0 bg-[#00809D] rounded-t-2xl text-[#00809D]"
+      headerClassName="p-0 m-0 bg-[#8B3A3A] rounded-t-2xl text-[#8B3A3A]"
       modal
       draggable={false}
       resizable={false}
       contentClassName="p-0"
     >
-      <div className="bg-[#00809D] text-white p-6">
+      <div className="bg-[#8B3A3A] text-white p-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
@@ -437,8 +437,8 @@ export function CrudForm({
           config.sections.map((section, sectionIndex) => (
             <div key={section} className="space-y-4">
               <div className="flex items-center gap-3 pb-3 border-b border-border">
-                <div className="w-8 h-8 bg-[#00809D]/10 rounded-lg flex items-center justify-center">
-                  <span className="text-[#00809D] font-bold text-sm">{sectionIndex + 1}</span>
+                <div className="w-8 h-8 bg-[#8B3A3A]/10 rounded-lg flex items-center justify-center">
+                  <span className="text-[#8B3A3A] font-bold text-sm">{sectionIndex + 1}</span>
                 </div>
                 <h3 className="text-lg font-semibold text-foreground">{section}</h3>
               </div>
@@ -470,7 +470,7 @@ export function CrudForm({
     <Button
       type="submit"
       loading={loading}
-      className="px-8 py-3 bg-[#00809D] text-white rounded-lg hover:bg-[#00809D]/90 transition-all duration-200 font-semibold shadow-md"
+      className="px-8 py-3 bg-[#8B3A3A] text-white rounded-lg hover:bg-[#8B3A3A]/90 transition-all duration-200 font-semibold shadow-md"
     >
       {config.submitButtonText || (mode === 'create' ? '✓ Create' : '✓ Update')}
     </Button>

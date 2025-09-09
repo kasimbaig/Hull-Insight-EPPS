@@ -6,13 +6,13 @@
 
 @layer base {
   :root {
-    /* Hull Insight Color Palette */
-    --hull-navy: 210 78% 16%;           /* #0A1F44 - Primary Navy */
-    --hull-golden: 46 50% 94%;          /* #F5F2E7 - Golden White */
-    --hull-alert: 352 74% 51%;          /* #D72638 - Alert Red */
-    --hull-neutral: 210 22% 97%;        /* #F7F9FB - Neutral BG */
+    /* Hull Insight Color Palette - Warm Earthy Theme */
+    --hull-navy: 0 35% 35%;             /* #8B3A3A - Primary Deep Maroon */
+    --hull-golden: 20 45% 60%;          /* #C67B5A - Secondary Terracotta */
+    --hull-alert: 0 35% 35%;            /* #8B3A3A - Alert Red (same as primary) */
+    --hull-neutral: 45 30% 95%;         /* #F5F2E7 - Neutral Cream Background */
     --hull-success: 134 61% 41%;        /* #28A745 - Success Green */
-    --hull-warning: 45 100% 51%;        /* #FFC107 - Warning Yellow */
+    --hull-warning: 35 60% 70%;         /* #E8D5B7 - Warning Sandy Beige */
     
     /* Semantic Token Mapping */
     --background: var(--hull-neutral);
@@ -141,7 +141,7 @@
 
   /* Enhanced Sidebar Styles */
   .sidebar-enhanced {
-    background: #00809D;
+    background: #8B3A3A;
     border-right: 1px solid rgba(255, 255, 255, 0.1);
   }
 
@@ -229,11 +229,11 @@
   
   /* Vessel Master Table Styling */
   .vessel-datatable .p-datatable-header {
-    @apply bg-[#E6F7FF] text-[#00809D] border-0 !important;
+    @apply bg-[#E8D5B7] text-[#8B3A3A] border-0 !important;
   }
   
   .vessel-datatable .p-datatable-thead > tr > th {
-    @apply bg-[#E6F7FF] text-[#00809D] font-semibold border-t-2 border-b-2 border-r border-[#00809D] !important;
+    @apply bg-[#E8D5B7] text-[#8B3A3A] font-semibold border-t-2 border-b-2 border-r border-[#8B3A3A] !important;
   }
   
   .vessel-datatable .p-datatable-thead > tr > th:last-child {
@@ -253,11 +253,11 @@
   }
   
   .vessel-datatable .p-datatable-tbody > tr:hover {
-    @apply bg-[#00809D]/5 !important;
+    @apply bg-[#8B3A3A]/5 !important;
   }
   
   .vessel-datatable .p-datatable-table {
-    @apply border border-[#00809D] !important;
+    @apply border border-[#8B3A3A] !important;
   }
   
   .vessel-datatable .p-paginator {
@@ -265,10 +265,10 @@
   }
   
   .vessel-datatable .p-paginator .p-paginator-page {
-    @apply hover:bg-[#00809D]/10 hover:text-[#00809D] !important;
+    @apply hover:bg-[#8B3A3A]/10 hover:text-[#8B3A3A] !important;
   }
   
   .vessel-datatable .p-paginator .p-paginator-page.p-highlight {
-    @apply bg-[#00809D] text-white !important;
+    @apply bg-[#8B3A3A] text-white !important;
   }
 }

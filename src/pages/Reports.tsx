@@ -292,14 +292,14 @@ const Reports = () => {
       {/* Header */}
       <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-[#00809D]">Reports</h1>
+          <h1 className="text-3xl font-bold text-[#8B3A3A]">Reports</h1>
           <p className="text-muted-foreground mt-1">View and manage reports for all forms</p>
         </div>
         <div className="flex flex-col sm:flex-row gap-2">
           <Button
             onClick={handleRefreshHvacReports}
             disabled={loadingStates.hvac || !filters.selectedVessel}
-            className="bg-[#00809D] hover:bg-[#00809D]/90 text-white h-10 px-4"
+            className="bg-[#8B3A3A] hover:bg-[#8B3A3A]/90 text-white h-10 px-4"
           >
             <RefreshCw className={`mr-2 h-4 w-4 ${loadingStates.hvac ? 'animate-spin' : ''}`} />
             <span className="hidden sm:inline">Refresh HVAC Reports</span>
@@ -309,7 +309,7 @@ const Reports = () => {
             onClick={fetchTotalHvacTrials}
             disabled={loadingStates.totalTrials}
             variant="outline"
-            className="border-[#00809D] text-[#00809D] hover:bg-[#00809D]/10 h-10 px-4"
+            className="border-[#8B3A3A] text-[#8B3A3A] hover:bg-[#8B3A3A]/10 h-10 px-4"
           >
             <RefreshCw className={`mr-2 h-4 w-4 ${loadingStates.totalTrials ? 'animate-spin' : ''}`} />
             <span className="hidden sm:inline">Refresh Total Count</span>

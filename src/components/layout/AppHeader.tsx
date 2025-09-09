@@ -20,7 +20,7 @@ export function AppHeader() {
   };
 
   return (
-    <header className="h-16 border-b border-border bg-[#00809D] px-6 flex items-center justify-between hull-shadow">
+    <header className="h-16 border-b border-border bg-[#8B3A3A] px-6 flex items-center justify-between hull-shadow">
       {/* Left Section */}
       <div className="flex items-center gap-4">
         {/* Global Search */}

@@ -134,7 +134,7 @@ const MasterPageWrapper = ({ children, currentPage }: { children: React.ReactNod
                   onClick={() => handleTabClick(item)}
                   className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors whitespace-nowrap flex-shrink-0 ${
                     isActive
-                      ? 'border-[#00809D] text-[#00809D] bg-[#00809D]/5'
+                      ? 'border-[#8B3A3A] text-[#8B3A3A] bg-[#8B3A3A]/5'
                       : 'border-transparent text-muted-foreground hover:text-foreground hover:border-muted-foreground'
                   }`}
                 >
@@ -200,7 +200,7 @@ const UsersRolesPageWrapper = ({ children, currentPage }: { children: React.Reac
                   onClick={() => handleTabClick(item)}
                   className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors whitespace-nowrap flex-shrink-0 ${
                     isActive
-                      ? 'border-[#00809D] text-[#00809D] bg-[#00809D]/5'
+                      ? 'border-[#8B3A3A] text-[#8B3A3A] bg-[#8B3A3A]/5'
                       : 'border-transparent text-muted-foreground hover:text-foreground hover:border-muted-foreground'
                   }`}
                 >

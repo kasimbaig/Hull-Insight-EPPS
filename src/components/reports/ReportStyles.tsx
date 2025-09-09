@@ -69,7 +69,7 @@ export const ReportHeader = ({
   onDownloadWord: () => void;
   onClose?: () => void;
 }) => (
-  <div className="bg-[#00809D] text-white p-8">
+  <div className="bg-[#8B3A3A] text-white p-8">
     <div className="flex justify-between items-center">
       <div className="flex-1">
         <h1 className="text-4xl font-bold text-center mb-4" style={{ fontSize: '36px', fontWeight: 'bold' }}>
@@ -82,20 +82,20 @@ export const ReportHeader = ({
       <div className="flex gap-2 ml-4">
         <button
           onClick={onDownloadPDF}
-          className="bg-white text-[#00809D] hover:bg-gray-100 px-4 py-2 rounded border border-white text-sm font-medium"
+          className="bg-white text-[#8B3A3A] hover:bg-gray-100 px-4 py-2 rounded border border-white text-sm font-medium"
         >
           Download PDF
         </button>
         <button
           onClick={onDownloadWord}
-          className="bg-white text-[#00809D] hover:bg-gray-100 px-4 py-2 rounded border border-white text-sm font-medium"
+          className="bg-white text-[#8B3A3A] hover:bg-gray-100 px-4 py-2 rounded border border-white text-sm font-medium"
         >
           Download Word
         </button>
         {onClose && (
           <button
             onClick={onClose}
-            className="bg-white text-[#00809D] hover:bg-gray-100 px-4 py-2 rounded border border-white text-sm font-medium"
+            className="bg-white text-[#8B3A3A] hover:bg-gray-100 px-4 py-2 rounded border border-white text-sm font-medium"
           >
             Close
           </button>

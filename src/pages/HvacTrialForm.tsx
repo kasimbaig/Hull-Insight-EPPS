@@ -981,7 +981,7 @@ const HvacTrialForm = () => {
 
         <Button
           onClick={handleOpenNewTrial}
-          className="bg-[#00809D] hover:bg-[#00809D]/90 text-white px-6 py-2 rounded-md font-medium"
+          className="bg-[#8B3A3A] hover:bg-[#8B3A3A]/90 text-white px-6 py-2 rounded-md font-medium"
         >
               <Plus className="mr-2 h-4 w-4" /> Add Trial
             </Button>
@@ -989,9 +989,9 @@ const HvacTrialForm = () => {
         <Dialog
           visible={isTrialDialogOpen}
           onHide={() => setIsTrialDialogOpen(false)}
-          headerClassName="p-1 m-5 bg-[#00809D] rounded-t-2xl text-white w-8xl max-w-8xl "
+          headerClassName="p-1 m-5 bg-[#8B3A3A] rounded-t-2xl text-white w-8xl max-w-8xl "
           header={
-            <div className="bg-[#00809D] p-6 text-white rounded-t-lg">
+            <div className="bg-[#8B3A3A] p-6 text-white rounded-t-lg">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
@@ -1041,7 +1041,7 @@ const HvacTrialForm = () => {
               {/* Section 1: Basic Information */}
               <div className="space-y-4">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-8 h-8 bg-[#00809D] rounded-full flex items-center justify-center">
+                  <div className="w-8 h-8 bg-[#8B3A3A] rounded-full flex items-center justify-center">
                     <span className="text-white font-semibold text-sm">
                       1
                     </span>
@@ -1183,7 +1183,7 @@ const HvacTrialForm = () => {
                     !trialForm.date_of_trials ||
                     !trialForm.place_of_trials
                   }
-                  className="bg-[#00809D] hover:bg-[#00809D]/90 text-white px-6 py-2 rounded-md font-medium"
+                  className="bg-[#8B3A3A] hover:bg-[#8B3A3A]/90 text-white px-6 py-2 rounded-md font-medium"
                 >
                   <svg
                     className="mr-2 h-4 w-4"
@@ -1204,7 +1204,7 @@ const HvacTrialForm = () => {
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-[#00809D] rounded-full flex items-center justify-center">
+                    <div className="w-8 h-8 bg-[#8B3A3A] rounded-full flex items-center justify-center">
                       <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"/>
                       </svg>
@@ -1216,7 +1216,7 @@ const HvacTrialForm = () => {
                     <Button 
                       onClick={handleAirFlowSaveNew} 
                       disabled={!editingTrial}
-                    className="bg-[#00809D] hover:bg-[#00809D]/90 text-white px-4 py-2 rounded-md font-medium"
+                    className="bg-[#8B3A3A] hover:bg-[#8B3A3A]/90 text-white px-4 py-2 rounded-md font-medium"
                     >
                     <Plus className="mr-2 h-4 w-4" /> Add Measurement
                     </Button>
@@ -1432,7 +1432,7 @@ const HvacTrialForm = () => {
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-[#00809D] rounded-full flex items-center justify-center">
+                    <div className="w-8 h-8 bg-[#8B3A3A] rounded-full flex items-center justify-center">
                       <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"/>
                       </svg>
@@ -1444,7 +1444,7 @@ const HvacTrialForm = () => {
                     <Button 
                       onClick={handleMachinerySaveNew} 
                       disabled={!editingTrial}
-                    className="bg-[#00809D] hover:bg-[#00809D]/90 text-white px-4 py-2 rounded-md font-medium"
+                    className="bg-[#8B3A3A] hover:bg-[#8B3A3A]/90 text-white px-4 py-2 rounded-md font-medium"
                     >
                     <Plus className="mr-2 h-4 w-4" /> Add Measurement
                     </Button>
@@ -1681,7 +1681,7 @@ const HvacTrialForm = () => {
                 {/* <Button 
                   onClick={handleTrialSave}
                   disabled={!trialForm.ship || !trialForm.date_of_trials || !trialForm.place_of_trials}
-                  className="bg-[#00809D] hover:bg-[#00809D]/90 text-white px-6 py-2 rounded-md font-medium"
+                  className="bg-[#8B3A3A] hover:bg-[#8B3A3A]/90 text-white px-6 py-2 rounded-md font-medium"
                 >
                   <svg className="mr-2 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />

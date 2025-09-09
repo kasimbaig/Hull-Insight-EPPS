@@ -153,13 +153,13 @@ export default function Dashboard() {
 
   const { barData, pieData } = chartDataSets[selectedPeriod as keyof typeof chartDataSets];
 
-  const COLORS = ["#00809D", "#00A8CC", "#4ECDC4", "#45B7D1", "#96CEB4", "#FECA57"];
+  const COLORS = ["#8B3A3A", "#00A8CC", "#4ECDC4", "#45B7D1", "#96CEB4", "#FECA57"];
 
   // New chart data for different time periods
   const newChartDataSets = {
     '7d': {
       donutData: [
-        { name: "Operational", value: 85, color: "#00809D" },
+        { name: "Operational", value: 85, color: "#8B3A3A" },
         { name: "Maintenance", value: 10, color: "#00A8CC" },
         { name: "Repair", value: 3, color: "#4ECDC4" },
         { name: "Out of Service", value: 2, color: "#FECA57" }
@@ -176,7 +176,7 @@ export default function Dashboard() {
     },
     '30d': {
       donutData: [
-        { name: "Operational", value: 78, color: "#00809D" },
+        { name: "Operational", value: 78, color: "#8B3A3A" },
         { name: "Maintenance", value: 15, color: "#00A8CC" },
         { name: "Repair", value: 5, color: "#4ECDC4" },
         { name: "Out of Service", value: 2, color: "#FECA57" }
@@ -190,7 +190,7 @@ export default function Dashboard() {
     },
     '90d': {
       donutData: [
-        { name: "Operational", value: 72, color: "#00809D" },
+        { name: "Operational", value: 72, color: "#8B3A3A" },
         { name: "Maintenance", value: 18, color: "#00A8CC" },
         { name: "Repair", value: 7, color: "#4ECDC4" },
         { name: "Out of Service", value: 3, color: "#FECA57" }
@@ -255,7 +255,7 @@ export default function Dashboard() {
       {/* Charts Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Fleet Trend Bar Chart */}
-        <Card className="p-6 bg-gradient-to-br from-background to-muted/20 border-l-4 border-l-[#00809D] transition-all duration-500">
+        <Card className="p-6 bg-gradient-to-br from-background to-muted/20 border-l-4 border-l-[#8B3A3A] transition-all duration-500">
           <h2 className="text-xl font-semibold text-foreground mb-6">
             Fleet Trend ({selectedPeriod === '7d' ? 'Last 7 Days' : selectedPeriod === '30d' ? 'Last 4 Weeks' : 'Last 3 Months'})
           </h2>
@@ -265,7 +265,7 @@ export default function Dashboard() {
               <YAxis />
               <Tooltip />
               <Legend />
-              <Bar dataKey="Operational" fill="#00809D" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="Operational" fill="#8B3A3A" radius={[4, 4, 0, 0]} />
               <Bar dataKey="Maintenance" fill="#00A8CC" radius={[4, 4, 0, 0]} />
               <Bar dataKey="Repair" fill="#4ECDC4" radius={[4, 4, 0, 0]} />
             </BarChart>
@@ -284,7 +284,7 @@ export default function Dashboard() {
                 cx="50%"
                 cy="45%"
                 outerRadius={90}
-                fill="#00809D"
+                fill="#8B3A3A"
                 label={({ name, value }) => `${name}: ${value}`}
                 labelLine={false}
               >
@@ -294,12 +294,12 @@ export default function Dashboard() {
               </Pie>
               <Tooltip 
                 formatter={(value: any, name: any) => [`${value}`, name]}
-                labelStyle={{ color: '#00809D', fontWeight: 'bold' }}
+                labelStyle={{ color: '#8B3A3A', fontWeight: 'bold' }}
               />
               <Legend 
                 verticalAlign="bottom" 
                 height={36}
-                formatter={(value) => <span style={{ color: '#00809D', fontWeight: 'bold' }}>{value}</span>}
+                formatter={(value) => <span style={{ color: '#8B3A3A', fontWeight: 'bold' }}>{value}</span>}
               />
             </PieChart>
           </ResponsiveContainer>
@@ -323,7 +323,7 @@ export default function Dashboard() {
                 cy="45%"
                 innerRadius={50}
                 outerRadius={100}
-                fill="#00809D"
+                fill="#8B3A3A"
                 label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
                 labelLine={false}
               >
@@ -333,12 +333,12 @@ export default function Dashboard() {
               </Pie>
               <Tooltip 
                 formatter={(value: any) => [`${value}%`, 'Percentage']}
-                labelStyle={{ color: '#00809D', fontWeight: 'bold' }}
+                labelStyle={{ color: '#8B3A3A', fontWeight: 'bold' }}
               />
               <Legend 
                 verticalAlign="bottom" 
                 height={36}
-                formatter={(value) => <span style={{ color: '#00809D', fontWeight: 'bold' }}>{value}</span>}
+                formatter={(value) => <span style={{ color: '#8B3A3A', fontWeight: 'bold' }}>{value}</span>}
               />
             </PieChart>
           </ResponsiveContainer>
@@ -353,29 +353,29 @@ export default function Dashboard() {
             <LineChart data={lineData} key={selectedPeriod}>
               <XAxis 
                 dataKey={selectedPeriod === '7d' ? 'day' : selectedPeriod === '30d' ? 'week' : 'month'} 
-                stroke="#00809D"
+                stroke="#8B3A3A"
                 fontSize={12}
               />
-              <YAxis stroke="#00809D" fontSize={12} />
+              <YAxis stroke="#8B3A3A" fontSize={12} />
               <Tooltip 
                 contentStyle={{
                   backgroundColor: '#f8fafc',
-                  border: '1px solid #00809D',
+                  border: '1px solid #8B3A3A',
                   borderRadius: '8px',
-                  color: '#00809D'
+                  color: '#8B3A3A'
                 }}
-                labelStyle={{ color: '#00809D', fontWeight: 'bold' }}
+                labelStyle={{ color: '#8B3A3A', fontWeight: 'bold' }}
               />
               <Legend 
-                formatter={(value) => <span style={{ color: '#00809D', fontWeight: 'bold' }}>{value}</span>}
+                formatter={(value) => <span style={{ color: '#8B3A3A', fontWeight: 'bold' }}>{value}</span>}
               />
               <Line 
                 type="monotone" 
                 dataKey="hull_inspections" 
-                stroke="#00809D" 
+                stroke="#8B3A3A" 
                 strokeWidth={3}
-                dot={{ fill: '#00809D', strokeWidth: 2, r: 6 }}
-                activeDot={{ r: 8, stroke: '#00809D', strokeWidth: 2 }}
+                dot={{ fill: '#8B3A3A', strokeWidth: 2, r: 6 }}
+                activeDot={{ r: 8, stroke: '#8B3A3A', strokeWidth: 2 }}
                 name="Hull Inspections"
               />
               <Line 

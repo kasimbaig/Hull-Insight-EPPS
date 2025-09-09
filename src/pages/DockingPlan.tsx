@@ -581,7 +581,7 @@ const DockingPlan = () => {
       {rowData.status === "IHQ Review" && (
         <Button
           size="sm"
-          className="bg-[#00809D] hover:bg-[#00809D]/90 text-white"
+          className="bg-[#8B3A3A] hover:bg-[#8B3A3A]/90 text-white"
           title="Approve Checkoff List"
           onClick={() => handleStatusChange(rowData.id, "Approved")}
         >
@@ -614,7 +614,7 @@ const DockingPlan = () => {
         <h1 className="text-3xl font-bold">Docking Plan Approval</h1>
         <Button
           onClick={handleOpenNewCheckoff}
-          className="bg-[#00809D] hover:bg-[#00809D]/90 text-white px-6 py-2 rounded-md font-medium"
+          className="bg-[#8B3A3A] hover:bg-[#8B3A3A]/90 text-white px-6 py-2 rounded-md font-medium"
         >
           <Plus className="mr-2 h-4 w-4" /> New Check-off List
         </Button>
@@ -637,7 +637,7 @@ const DockingPlan = () => {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Ship className="h-5 w-5 text-[#00809D]" />
+            <Ship className="h-5 w-5 text-[#8B3A3A]" />
             Docking Check-off Lists
           </CardTitle>
         </CardHeader>
@@ -695,7 +695,7 @@ const DockingPlan = () => {
       {/* Check-off List Dialog */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto">
-          <DialogHeader className="bg-[#00809D] p-6 text-white rounded-t-lg">
+          <DialogHeader className="bg-[#8B3A3A] p-6 text-white rounded-t-lg">
             <DialogTitle className="text-xl font-bold">
               {editingCheckoff ? "Edit Check-off List" : "New Check-off List"}
             </DialogTitle>
@@ -707,9 +707,9 @@ const DockingPlan = () => {
           <div className="space-y-6">
             {/* Basic Information */}
             <Card>
-              <CardHeader className="bg-[#00809D]/10">
-                <CardTitle className="text-lg text-[#00809D] flex items-center gap-2">
-                  <div className="w-6 h-6 bg-[#00809D] rounded-full flex items-center justify-center">
+              <CardHeader className="bg-[#8B3A3A]/10">
+                <CardTitle className="text-lg text-[#8B3A3A] flex items-center gap-2">
+                  <div className="w-6 h-6 bg-[#8B3A3A] rounded-full flex items-center justify-center">
                     <span className="text-white font-semibold text-xs">1</span>
                   </div>
                   Basic Information
@@ -773,9 +773,9 @@ const DockingPlan = () => {
 
             {/* Vessel Dimensions */}
             <Card>
-              <CardHeader className="bg-[#00809D]/10">
-                <CardTitle className="text-lg text-[#00809D] flex items-center gap-2">
-                  <div className="w-6 h-6 bg-[#00809D] rounded-full flex items-center justify-center">
+              <CardHeader className="bg-[#8B3A3A]/10">
+                <CardTitle className="text-lg text-[#8B3A3A] flex items-center gap-2">
+                  <div className="w-6 h-6 bg-[#8B3A3A] rounded-full flex items-center justify-center">
                     <span className="text-white font-semibold text-xs">2</span>
                   </div>
                   Vessel Dimensions
@@ -814,9 +814,9 @@ const DockingPlan = () => {
 
             {/* Stability Parameters */}
             <Card>
-              <CardHeader className="bg-[#00809D]/10">
-                <CardTitle className="text-lg text-[#00809D] flex items-center gap-2">
-                  <div className="w-6 h-6 bg-[#00809D] rounded-full flex items-center justify-center">
+              <CardHeader className="bg-[#8B3A3A]/10">
+                <CardTitle className="text-lg text-[#8B3A3A] flex items-center gap-2">
+                  <div className="w-6 h-6 bg-[#8B3A3A] rounded-full flex items-center justify-center">
                     <span className="text-white font-semibold text-xs">3</span>
                   </div>
                   Stability Parameters
@@ -867,9 +867,9 @@ const DockingPlan = () => {
 
             {/* Authorities */}
             <Card>
-              <CardHeader className="bg-[#00809D]/10">
-                <CardTitle className="text-lg text-[#00809D] flex items-center gap-2">
-                  <div className="w-6 h-6 bg-[#00809D] rounded-full flex items-center justify-center">
+              <CardHeader className="bg-[#8B3A3A]/10">
+                <CardTitle className="text-lg text-[#8B3A3A] flex items-center gap-2">
+                  <div className="w-6 h-6 bg-[#8B3A3A] rounded-full flex items-center justify-center">
                     <span className="text-white font-semibold text-xs">4</span>
                   </div>
                   Authorities
@@ -919,7 +919,7 @@ const DockingPlan = () => {
             <div className="flex gap-2">
               <Button 
                 onClick={handleCheckoffSave}
-                className="bg-[#00809D] hover:bg-[#00809D]/90 text-white px-6 py-2 rounded-md font-medium"
+                className="bg-[#8B3A3A] hover:bg-[#8B3A3A]/90 text-white px-6 py-2 rounded-md font-medium"
               >
                 <Save className="mr-2 h-4 w-4" />
                 Save Check-off List

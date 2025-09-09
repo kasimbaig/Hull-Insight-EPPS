@@ -344,7 +344,7 @@ const SurveyReportHTML: React.FC<SurveyReportHTMLProps> = ({ report, onClose }) 
             <h3 className="text-lg font-bold mb-3">Defect Resolution Progress</h3>
             <div className="w-full bg-gray-200 rounded-full h-4">
               <div 
-                className="bg-[#00809D] h-4 rounded-full transition-all duration-300" 
+                className="bg-[#8B3A3A] h-4 rounded-full transition-all duration-300" 
                 style={{ width: `${getResolutionRate()}%` }}
               ></div>
             </div>

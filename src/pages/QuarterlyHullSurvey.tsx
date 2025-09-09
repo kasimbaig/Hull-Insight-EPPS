@@ -475,7 +475,7 @@ const QuarterlyHullSurvey = () => {
       )}
       <Button
         size="sm"
-        className="bg-[#00809D] hover:bg-[#00809D]/90 text-white"
+        className="bg-[#8B3A3A] hover:bg-[#8B3A3A]/90 text-white"
         title="Forward to Authorities"
         onClick={() => handleForwardToAuthorities(rowData.id)}
       >
@@ -497,7 +497,7 @@ const QuarterlyHullSurvey = () => {
     if (rowData.isEditing) {
       return (
         <Input
-          className="border-2 border-[#00809D] focus:border-[#00809D]/80"
+          className="border-2 border-[#8B3A3A] focus:border-[#8B3A3A]/80"
           value={rowData.description}
           onChange={(e) => handleDefectChange(rowData.id, "description", e.target.value)}
           placeholder="Enter description"
@@ -515,7 +515,7 @@ const QuarterlyHullSurvey = () => {
     if (rowData.isEditing) {
       return (
         <Select value={rowData.status} onValueChange={(val) => handleDefectChange(rowData.id, "status", val)}>
-          <SelectTrigger className="border-2 border-[#00809D] focus:border-[#00809D]/80">
+          <SelectTrigger className="border-2 border-[#8B3A3A] focus:border-[#8B3A3A]/80">
             <SelectValue placeholder="Select Status" />
           </SelectTrigger>
           <SelectContent className="z-[9999]">
@@ -538,18 +538,18 @@ const QuarterlyHullSurvey = () => {
   const defectMarkingsBodyTemplate = (rowData: Defect) => {
     if (rowData.isEditing) {
       return (
-        <div className="flex flex-wrap gap-1 items-center min-h-[40px] border-2 border-[#00809D] focus:border-[#00809D]/80 rounded-md p-2">
+        <div className="flex flex-wrap gap-1 items-center min-h-[40px] border-2 border-[#8B3A3A] focus:border-[#8B3A3A]/80 rounded-md p-2">
           {rowData.markings.length > 0 && (
             <div className="flex flex-wrap gap-1 mb-2">
               {rowData.markings.map((m) => (
                 <span
                   key={m}
-                  className="inline-flex items-center px-2 py-1 rounded-md bg-[#00809D]/10 text-[#00809D] text-xs"
+                  className="inline-flex items-center px-2 py-1 rounded-md bg-[#8B3A3A]/10 text-[#8B3A3A] text-xs"
                 >
                   {m}
                   <button
                     type="button"
-                    className="ml-1 text-[#00809D] hover:text-[#00809D]/80"
+                    className="ml-1 text-[#8B3A3A] hover:text-[#8B3A3A]/80"
                     onClick={() => handleDefectChange(rowData.id, "markings", rowData.markings.filter(mark => mark !== m))}
                   >
                     ×
@@ -566,7 +566,7 @@ const QuarterlyHullSurvey = () => {
               }
             }}
           >
-            <SelectTrigger className="border-2 border-[#00809D] focus:border-[#00809D]/80">
+            <SelectTrigger className="border-2 border-[#8B3A3A] focus:border-[#8B3A3A]/80">
               <SelectValue placeholder="Add marking..." />
             </SelectTrigger>
             <SelectContent className="z-[9999]">
@@ -586,7 +586,7 @@ const QuarterlyHullSurvey = () => {
           rowData.markings.map((m) => (
             <span
               key={m}
-              className="inline-flex items-center px-2 py-1 rounded-md bg-[#00809D]/10 text-[#00809D] text-xs"
+              className="inline-flex items-center px-2 py-1 rounded-md bg-[#8B3A3A]/10 text-[#8B3A3A] text-xs"
             >
               {m}
             </span>
@@ -602,7 +602,7 @@ const QuarterlyHullSurvey = () => {
     if (rowData.isEditing) {
       return (
         <Select value={rowData.compartment} onValueChange={(val) => handleDefectChange(rowData.id, "compartment", val)}>
-          <SelectTrigger className="border-2 border-[#00809D] focus:border-[#00809D]/80">
+          <SelectTrigger className="border-2 border-[#8B3A3A] focus:border-[#8B3A3A]/80">
             <SelectValue placeholder="Select Compartment" />
           </SelectTrigger>
           <SelectContent className="z-[9999]">
@@ -626,7 +626,7 @@ const QuarterlyHullSurvey = () => {
     if (rowData.isEditing) {
       return (
         <Input
-          className="border-2 border-[#00809D] focus:border-[#00809D]/80"
+          className="border-2 border-[#8B3A3A] focus:border-[#8B3A3A]/80"
           value={rowData.remarks || ""}
           onChange={(e) => handleDefectChange(rowData.id, "remarks", e.target.value)}
           placeholder="Enter remarks"
@@ -643,7 +643,7 @@ const QuarterlyHullSurvey = () => {
       {rowData.isEditing ? (
         <Button
           size="sm"
-          className="bg-[#00809D] hover:bg-[#00809D]/90 text-white"
+          className="bg-[#8B3A3A] hover:bg-[#8B3A3A]/90 text-white"
           title="Save Defect"
           onClick={() => handleDefectSave(rowData.id)}
         >
@@ -685,7 +685,7 @@ const QuarterlyHullSurvey = () => {
         <h1 className="text-3xl font-bold">Quarterly Hull Survey</h1>
         <Button
           onClick={handleOpenNewSurvey}
-          className="bg-[#00809D] hover:bg-[#00809D]/90 text-white px-6 py-2 rounded-md font-medium"
+          className="bg-[#8B3A3A] hover:bg-[#8B3A3A]/90 text-white px-6 py-2 rounded-md font-medium"
         >
           <Plus className="mr-2 h-4 w-4" /> New Survey
         </Button>
@@ -708,7 +708,7 @@ const QuarterlyHullSurvey = () => {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <CheckCircle className="h-5 w-5 text-[#00809D]" />
+            <CheckCircle className="h-5 w-5 text-[#8B3A3A]" />
             Survey Records
           </CardTitle>
         </CardHeader>
@@ -766,7 +766,7 @@ const QuarterlyHullSurvey = () => {
       {/* Survey Dialog */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogContent className="max-w-7xl max-h-[90vh] overflow-y-auto">
-          <DialogHeader className="bg-[#00809D] p-6 text-white rounded-t-lg">
+          <DialogHeader className="bg-[#8B3A3A] p-6 text-white rounded-t-lg">
             <DialogTitle className="text-xl font-bold">
               {editingSurvey ? "Edit Survey" : "New Survey"}
             </DialogTitle>
@@ -778,9 +778,9 @@ const QuarterlyHullSurvey = () => {
           <div className="space-y-6">
             {/* Survey Form */}
             <Card>
-              <CardHeader className="bg-[#00809D]/10">
-                <CardTitle className="text-lg text-[#00809D] flex items-center gap-2">
-                  <div className="w-6 h-6 bg-[#00809D] rounded-full flex items-center justify-center">
+              <CardHeader className="bg-[#8B3A3A]/10">
+                <CardTitle className="text-lg text-[#8B3A3A] flex items-center gap-2">
+                  <div className="w-6 h-6 bg-[#8B3A3A] rounded-full flex items-center justify-center">
                     <span className="text-white font-semibold text-xs">1</span>
                   </div>
                   Survey Information
@@ -790,7 +790,7 @@ const QuarterlyHullSurvey = () => {
                 <div className="space-y-2">
                   <Label className="text-sm font-medium">Quarter *</Label>
                   <Select value={surveyForm.quarter} onValueChange={(val) => setSurveyForm(f => ({ ...f, quarter: val }))}>
-                    <SelectTrigger className="h-10 border-2 border-[#00809D] focus:border-[#00809D]/80">
+                    <SelectTrigger className="h-10 border-2 border-[#8B3A3A] focus:border-[#8B3A3A]/80">
                       <SelectValue placeholder="Select Quarter" />
                     </SelectTrigger>
                     <SelectContent className="z-[9999]">
@@ -805,7 +805,7 @@ const QuarterlyHullSurvey = () => {
                   <Label className="text-sm font-medium">Date of Survey *</Label>
                   <Input
                     type="date"
-                    className="h-10 border-2 border-[#00809D] focus:border-[#00809D]/80"
+                    className="h-10 border-2 border-[#8B3A3A] focus:border-[#8B3A3A]/80"
                     value={surveyForm.date_of_survey}
                     onChange={(e) => setSurveyForm(f => ({ ...f, date_of_survey: e.target.value }))}
                   />
@@ -814,7 +814,7 @@ const QuarterlyHullSurvey = () => {
                 <div className="space-y-2">
                   <Label className="text-sm font-medium">Ship *</Label>
                   <Select value={surveyForm.ship} onValueChange={(val) => setSurveyForm(f => ({ ...f, ship: val }))}>
-                    <SelectTrigger className="h-10 border-2 border-[#00809D] focus:border-[#00809D]/80">
+                    <SelectTrigger className="h-10 border-2 border-[#8B3A3A] focus:border-[#8B3A3A]/80">
                       <SelectValue placeholder="Select Ship" />
                     </SelectTrigger>
                     <SelectContent className="z-[9999]">
@@ -828,7 +828,7 @@ const QuarterlyHullSurvey = () => {
                 <div className="space-y-2">
                   <Label className="text-sm font-medium">Reporting Officer *</Label>
                   <Input
-                    className="h-10 border-2 border-[#00809D] focus:border-[#00809D]/80"
+                    className="h-10 border-2 border-[#8B3A3A] focus:border-[#8B3A3A]/80"
                     value={surveyForm.reporting_officer}
                     onChange={(e) => setSurveyForm(f => ({ ...f, reporting_officer: e.target.value }))}
                     placeholder="Enter officer name"
@@ -861,17 +861,17 @@ const QuarterlyHullSurvey = () => {
 
             {/* Defects Table */}
             <Card>
-              <CardHeader className="bg-[#00809D]/10">
+              <CardHeader className="bg-[#8B3A3A]/10">
                 <div className="flex justify-between items-center">
-                  <CardTitle className="text-lg text-[#00809D] flex items-center gap-2">
-                    <div className="w-6 h-6 bg-[#00809D] rounded-full flex items-center justify-center">
+                  <CardTitle className="text-lg text-[#8B3A3A] flex items-center gap-2">
+                    <div className="w-6 h-6 bg-[#8B3A3A] rounded-full flex items-center justify-center">
                       <span className="text-white font-semibold text-xs">2</span>
                     </div>
                     Defects & Observations
                   </CardTitle>
                   <Button
                     onClick={handleAddNewDefect}
-                    className="bg-[#00809D] hover:bg-[#00809D]/90 text-white"
+                    className="bg-[#8B3A3A] hover:bg-[#8B3A3A]/90 text-white"
                   >
                     <Plus className="mr-2 h-4 w-4" />
                     Add Defect
@@ -964,13 +964,13 @@ const QuarterlyHullSurvey = () => {
               </Button>
               <Button
                 onClick={handleSurveySave}
-                className="bg-[#00809D] hover:bg-[#00809D]/90 text-white px-6 py-2 rounded-md font-medium"
+                className="bg-[#8B3A3A] hover:bg-[#8B3A3A]/90 text-white px-6 py-2 rounded-md font-medium"
               >
                 <Save className="mr-2 h-4 w-4" />
                 Save Survey
               </Button>
               <Button
-                className="bg-[#00809D] hover:bg-[#00809D]/90 text-white px-6 py-2 rounded-md font-medium"
+                className="bg-[#8B3A3A] hover:bg-[#8B3A3A]/90 text-white px-6 py-2 rounded-md font-medium"
                 onClick={() => {
                   handleSurveySave();
                   handleForwardToAuthorities(editingSurvey?.id || Date.now());

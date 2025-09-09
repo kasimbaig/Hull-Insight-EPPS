@@ -123,18 +123,18 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#00809D]/10 via-white to-[#00809D]/5 flex items-center justify-center p-4 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-[#8B3A3A]/10 via-white to-[#8B3A3A]/5 flex items-center justify-center p-4 relative overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-20 bg-[#00809D]">
-        <div className="absolute top-20 left-20 w-32 h-32 bg-[#00809D] rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-40 h-40 bg-[#00809D] rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-[#00809D] rounded-full blur-3xl"></div>
+      <div className="absolute inset-0 opacity-20 bg-[#8B3A3A]">
+        <div className="absolute top-20 left-20 w-32 h-32 bg-[#8B3A3A] rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-20 w-40 h-40 bg-[#8B3A3A] rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-[#8B3A3A] rounded-full blur-3xl"></div>
       </div>
       
       <div className="w-full max-w-md relative z-10">
         {/* Logo and Header */}
         <div className="text-center mb-10">
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-[#00809D] to-[#00809D]/70 bg-clip-text text-transparent mb-3">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-[#8B3A3A] to-[#8B3A3A]/70 bg-clip-text text-transparent mb-3">
             Hull Insight
           </h1>
           <p className="text-gray-600 text-lg font-medium">Naval Management System</p>
@@ -163,7 +163,7 @@ export default function Login() {
                 </label>
                 <div className="relative group">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <User className="h-4 w-4 text-gray-400 group-focus-within:text-[#00809D] transition-colors duration-200" />
+                    <User className="h-4 w-4 text-gray-400 group-focus-within:text-[#8B3A3A] transition-colors duration-200" />
                   </div>
                   <InputText
                     id="loginname"
@@ -173,7 +173,7 @@ export default function Login() {
                     className={`w-full pl-10 pr-4 py-3 border-2 rounded-lg transition-all duration-200 ${
                       errors.loginname 
                         ? 'border-red-300 focus:border-red-500 focus:ring-2 focus:ring-red-100' 
-                        : 'border-gray-200 focus:border-[#00809D] focus:ring-2 focus:ring-[#00809D]/10 hover:border-gray-300'
+                        : 'border-gray-200 focus:border-[#8B3A3A] focus:ring-2 focus:ring-[#8B3A3A]/10 hover:border-gray-300'
                     }`}
                     disabled={loading}
                   />
@@ -190,7 +190,7 @@ export default function Login() {
                 </label>
                 <div className="relative group">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Lock className="h-4 w-4 text-gray-400 group-focus-within:text-[#00809D] transition-colors duration-200" />
+                    <Lock className="h-4 w-4 text-gray-400 group-focus-within:text-[#8B3A3A] transition-colors duration-200" />
                   </div>
                   <InputText
                     id="password"
@@ -201,14 +201,14 @@ export default function Login() {
                     className={`w-full pl-10 pr-12 py-3 border-2 rounded-lg transition-all duration-200 ${
                       errors.password 
                         ? 'border-red-300 focus:border-red-500 focus:ring-2 focus:ring-red-100' 
-                        : 'border-gray-200 focus:border-[#00809D] focus:ring-2 focus:ring-[#00809D]/10 hover:border-gray-300'
+                        : 'border-gray-200 focus:border-[#8B3A3A] focus:ring-2 focus:ring-[#8B3A3A]/10 hover:border-gray-300'
                     }`}
                     disabled={loading}
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-[#00809D] transition-colors duration-200"
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-[#8B3A3A] transition-colors duration-200"
                     disabled={loading}
                   >
                     {showPassword ? (
@@ -228,7 +228,7 @@ export default function Login() {
                 type="submit"
                 label={loading ? 'Signing in...' : 'Sign In'}
                 loading={loading}
-                className="w-full bg-[#00809D] hover:bg-[#00809D]/90 text-white py-3 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200"
+                className="w-full bg-[#8B3A3A] hover:bg-[#8B3A3A]/90 text-white py-3 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200"
                 disabled={loading}
               />
             </form>

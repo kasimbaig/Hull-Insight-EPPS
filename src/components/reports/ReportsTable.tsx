@@ -67,14 +67,14 @@ export const ReportsTable = ({
 
   // Memoized table body templates
   const reportTypeBodyTemplate = useCallback((rowData: any) => (
-    <Badge variant="outline" className="bg-[#00809D]/10 text-[#00809D] border-[#00809D]">
+    <Badge variant="outline" className="bg-[#8B3A3A]/10 text-[#8B3A3A] border-[#8B3A3A]">
       {rowData.report_type}
     </Badge>
   ), []);
 
   const vesselBodyTemplate = useCallback((rowData: any) => (
     <div className="flex items-center gap-2">
-      <Ship className="h-4 w-4 text-[#00809D]" />
+      <Ship className="h-4 w-4 text-[#8B3A3A]" />
       <span className="font-medium">{rowData.ship_name || rowData.vessel_name}</span>
     </div>
   ), []);
@@ -124,10 +124,10 @@ export const ReportsTable = ({
       return (
         <div className="space-y-1">
           <div className="text-sm">
-            <span className="font-medium text-[#00809D]">{rowData.air_flow_measurements || 0}</span> Air Flow
+            <span className="font-medium text-[#8B3A3A]">{rowData.air_flow_measurements || 0}</span> Air Flow
           </div>
           <div className="text-sm">
-            <span className="font-medium text-[#00809D]">{rowData.machinery_measurements || 0}</span> Machinery
+            <span className="font-medium text-[#8B3A3A]">{rowData.machinery_measurements || 0}</span> Machinery
           </div>
         </div>
       );
@@ -147,7 +147,7 @@ export const ReportsTable = ({
           title={isHvacDisabled ? "Select a vessel and load HVAC data first" : "Preview Report"}
           disabled={isHvacDisabled}
           onClick={() => onPreviewReport(rowData)}
-          className="h-8 w-8 p-0 hover:bg-[#00809D]/10"
+          className="h-8 w-8 p-0 hover:bg-[#8B3A3A]/10"
         >
           <Eye className="h-4 w-4" />
         </Button>
@@ -157,7 +157,7 @@ export const ReportsTable = ({
           title={isHvacDisabled ? "Select a vessel and load HVAC data first" : "Download PDF Report"}
           disabled={isHvacDisabled}
           onClick={() => onDownloadReport(rowData)}
-          className="h-8 w-8 p-0 hover:bg-[#00809D]/10"
+          className="h-8 w-8 p-0 hover:bg-[#8B3A3A]/10"
         >
           <Download className="h-4 w-4" />
         </Button>
@@ -169,7 +169,7 @@ export const ReportsTable = ({
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <FileText className="h-5 w-5 text-[#00809D]" />
+          <FileText className="h-5 w-5 text-[#8B3A3A]" />
           All Reports
         </CardTitle>
         {!filters.selectedVessel && (filters.selectedReportType === "all" || filters.selectedReportType === "hvac") && (

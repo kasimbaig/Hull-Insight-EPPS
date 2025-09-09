@@ -111,7 +111,7 @@ const CalculateAverageModal: React.FC<CalculateAverageModalProps> = ({
             step="0.01"
             value={values.airFlow[ductIndex]}
             onChange={(e) => handleValueChange('airFlow', ductIndex, e.target.value)}
-            className="h-8 text-sm border-2 border-gray-300 focus:border-[#00809D] focus:ring-1 focus:ring-[#00809D] bg-white"
+            className="h-8 text-sm border-2 border-gray-300 focus:border-[#8B3A3A] focus:ring-1 focus:ring-[#8B3A3A] bg-white"
             placeholder="0.00"
           />
         </div>
@@ -122,7 +122,7 @@ const CalculateAverageModal: React.FC<CalculateAverageModalProps> = ({
             step="0.01"
             value={values.flowRate[ductIndex]}
             onChange={(e) => handleValueChange('flowRate', ductIndex, e.target.value)}
-            className="h-8 text-sm border-2 border-gray-300 focus:border-[#00809D] focus:ring-1 focus:ring-[#00809D] bg-white"
+            className="h-8 text-sm border-2 border-gray-300 focus:border-[#8B3A3A] focus:ring-1 focus:ring-[#8B3A3A] bg-white"
             placeholder="0.00"
           />
         </div>
@@ -133,7 +133,7 @@ const CalculateAverageModal: React.FC<CalculateAverageModalProps> = ({
             step="0.01"
             value={values.designValue[ductIndex]}
             onChange={(e) => handleValueChange('designValue', ductIndex, e.target.value)}
-            className="h-8 text-sm border-2 border-gray-300 focus:border-[#00809D] focus:ring-1 focus:ring-[#00809D] bg-white"
+            className="h-8 text-sm border-2 border-gray-300 focus:border-[#8B3A3A] focus:ring-1 focus:ring-[#8B3A3A] bg-white"
             placeholder="0.00"
           />
         </div>
@@ -144,7 +144,7 @@ const CalculateAverageModal: React.FC<CalculateAverageModalProps> = ({
             step="0.01"
             value={values.measuredValue[ductIndex]}
             onChange={(e) => handleValueChange('measuredValue', ductIndex, e.target.value)}
-            className="h-8 text-sm border-2 border-gray-300 focus:border-[#00809D] focus:ring-1 focus:ring-[#00809D] bg-white"
+            className="h-8 text-sm border-2 border-gray-300 focus:border-[#8B3A3A] focus:ring-1 focus:ring-[#8B3A3A] bg-white"
             placeholder="0.00"
           />
         </div>
@@ -158,25 +158,25 @@ const CalculateAverageModal: React.FC<CalculateAverageModalProps> = ({
       <div className="grid grid-cols-4 gap-4">
         <div className="text-center">
           <div className="text-xs text-gray-500 mb-1">Air Flow (m/s)</div>
-          <div className="text-sm font-semibold text-[#00809D]">
+          <div className="text-sm font-semibold text-[#8B3A3A]">
             {averages.airFlow.toFixed(2)}
           </div>
         </div>
         <div className="text-center">
           <div className="text-xs text-gray-500 mb-1">Flow Rate (m³/hr)</div>
-          <div className="text-sm font-semibold text-[#00809D]">
+          <div className="text-sm font-semibold text-[#8B3A3A]">
             {averages.flowRate.toFixed(2)}
           </div>
         </div>
         <div className="text-center">
           <div className="text-xs text-gray-500 mb-1">Design Value</div>
-          <div className="text-sm font-semibold text-[#00809D]">
+          <div className="text-sm font-semibold text-[#8B3A3A]">
             {averages.designValue.toFixed(2)}
           </div>
         </div>
         <div className="text-center">
           <div className="text-xs text-gray-500 mb-1">Measured Value</div>
-          <div className="text-sm font-semibold text-[#00809D]">
+          <div className="text-sm font-semibold text-[#8B3A3A]">
             {averages.measuredValue.toFixed(2)}
           </div>
         </div>
@@ -188,9 +188,9 @@ const CalculateAverageModal: React.FC<CalculateAverageModalProps> = ({
     <Dialog
       visible={visible}
       onHide={onHide}
-      headerClassName='bg-[#00809D] p-4 text-white rounded-t-lg'
+      headerClassName='bg-[#8B3A3A] p-4 text-white rounded-t-lg'
       header={
-        <div className="bg-[#00809D] p-4 text-white rounded-t-lg">
+        <div className="bg-[#8B3A3A] p-4 text-white rounded-t-lg">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
               <Calculator className="w-5 h-5 text-white" />
@@ -250,7 +250,7 @@ const CalculateAverageModal: React.FC<CalculateAverageModalProps> = ({
           </Button>
           <Button
             onClick={handleSave}
-            className="bg-[#00809D] hover:bg-[#00809D]/90 text-white px-6 py-2 rounded-md font-medium"
+            className="bg-[#8B3A3A] hover:bg-[#8B3A3A]/90 text-white px-6 py-2 rounded-md font-medium"
           >
             <Save className="mr-2 h-4 w-4" />
             Save Averages

@@ -45,11 +45,11 @@
 /* Master Table Header Styling */
 .master-table-header {
   background-color: #E6F7FF !important;
-  color: #00809D !important;
+  color: #8B3A3A !important;
   font-weight: 600 !important;
-  border-top: 2px solid #00809D !important;
-  border-bottom: 2px solid #00809D !important;
-  border-right: 1px solid #00809D !important;
+  border-top: 2px solid #8B3A3A !important;
+  border-bottom: 2px solid #8B3A3A !important;
+  border-right: 1px solid #8B3A3A !important;
 }
 
 .master-table-header:last-child {
@@ -58,9 +58,9 @@
 
 .master-table-header-no-border {
   background-color: #E6F7FF !important;
-  color: #00809D !important;
+  color: #8B3A3A !important;
   font-weight: 600 !important;
-  border-top: 2px solid #00809D !important;
-  border-bottom: 2px solid #00809D !important;
+  border-top: 2px solid #8B3A3A !important;
+  border-bottom: 2px solid #8B3A3A !important;
   border: none !important;
 }

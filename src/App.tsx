@@ -24,7 +24,7 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =
     return (
       <div className="min-h-screen flex items-center justify-center bg-muted/20">
         <div className="text-center">
-          <div className="w-12 h-12 border-4 border-[#00809D] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="w-12 h-12 border-4 border-[#8B3A3A] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-muted-foreground">Loading...</p>
         </div>
       </div>
@@ -48,7 +48,7 @@ const PublicRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     return (
       <div className="min-h-screen flex items-center justify-center bg-muted/20">
         <div className="text-center">
-          <div className="w-12 h-12 border-4 border-[#00809D] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="w-12 h-12 border-4 border-[#8B3A3A] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-muted-foreground">Loading...</p>
         </div>
       </div>
