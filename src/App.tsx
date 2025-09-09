@@ -31,9 +31,9 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =
     );
   }
 
-  // If not authenticated after loading is complete, redirect to landing page
+  // If not authenticated after loading is complete, redirect to login page
   if (!isAuthenticated) {
-    console.log('User not authenticated, redirecting to landing page');
+    console.log('User not authenticated, redirecting to login page');
     return <Navigate to="/" replace />;
   }
 
@@ -61,7 +61,7 @@ const PublicRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     return <Navigate to="/dashboards" replace />;
   }
 
-  // If not authenticated, show login page
+  // If not authenticated, show login page (which is now the default)
   console.log('User not authenticated, showing login page');
   return <>{children}</>;
 };
@@ -76,6 +76,14 @@ const App = () => (
           <Routes>
             <Route 
               path="/" 
+              element={
+                <PublicRoute>
+                  <Login />
+                </PublicRoute>
+              }
+            />
+            <Route 
+              path="/landing" 
               element={<Landing />}
             />
             <Route 

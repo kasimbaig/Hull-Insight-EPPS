@@ -136,10 +136,10 @@ export function AppSidebar() {
   // Force the sidebar to always be visible with custom width
   const sidebarWidth = collapsed ? '80px' : '288px';
 
-  // Load default tab on component mount
+  // Load default tab on component mount only if user is authenticated
   useEffect(() => {
-    if (activeTab === '') {
-      // Add dashboard as default tab
+    if (activeTab === '' && location.pathname !== '/') {
+      // Add dashboard as default tab only if not on login page
       addTab({
         id: '/dashboards',
         title: 'Dashboards',
@@ -147,7 +147,7 @@ export function AppSidebar() {
         icon: BarChart3
       });
     }
-  }, [activeTab, addTab]);
+  }, [activeTab, addTab, location.pathname]);
 
   // Determine if a link is active based on current URL
   const isActive = (path: string) => location.pathname === path;

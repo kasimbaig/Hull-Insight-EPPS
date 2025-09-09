@@ -1,10 +1,8 @@
 import { useState } from "react";
-import { Calendar, Users, Ship, AlertTriangle, CheckCircle, Clock, FileText } from "lucide-react";
 import { KPICard } from "@/components/dashboard/KPICard";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Legend, LineChart, Line } from "recharts";
+import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Legend, LineChart, Line, Area, AreaChart } from "recharts";
 
 export default function Dashboard() {
   const [selectedPeriod, setSelectedPeriod] = useState('7d');
@@ -157,227 +155,57 @@ export default function Dashboard() {
 
   const COLORS = ["#00809D", "#00A8CC", "#4ECDC4", "#45B7D1", "#96CEB4", "#FECA57"];
 
-  // Recent activity data for different time periods
-  const activityDataSets = {
-    '7d': [
-      {
-        id: 1,
-        type: "survey_submitted",
-        title: "Daily Survey Submitted",
-        description: "INS Vikrant - Daily Hull Inspection",
-        status: "pending",
-        time: "2 hours ago",
-        user: "Lt. Commander Singh"
-      },
-      {
-        id: 2,
-        type: "plan_approved",
-        title: "Emergency Plan Approved",
-        description: "INS Kolkata - Emergency Repair Plan",
-        status: "approved",
-        time: "4 hours ago", 
-        user: "Admiral Nair"
-      },
-      {
-        id: 3,
-        type: "survey_reviewed",
-        title: "Survey Under Review",
-        description: "INS Chennai - Daily Hull Survey",
-        status: "under_review",
-        time: "6 hours ago",
-        user: "Captain Sharma"
-      },
-      {
-        id: 4,
-        type: "action_overdue",
-        title: "Daily Action Overdue",
-        description: "INS Mumbai - Hull Compartment C-302",
-        status: "overdue",
-        time: "1 day ago",
-        user: "System Alert"
-      }
-    ],
-    '30d': [
-      {
-        id: 1,
-        type: "survey_submitted",
-        title: "Weekly Survey Submitted",
-        description: "INS Vikrant - Weekly Hull Survey",
-        status: "pending",
-        time: "2 hours ago",
-        user: "Lt. Commander Singh"
-      },
-      {
-        id: 2,
-        type: "plan_approved",
-        title: "Monthly Plan Approved",
-        description: "INS Kolkata - Monthly Maintenance Plan",
-        status: "approved",
-        time: "4 hours ago", 
-        user: "Admiral Nair"
-      },
-      {
-        id: 3,
-        type: "survey_reviewed",
-        title: "Survey Under Review",
-        description: "INS Chennai - Weekly Hull Survey",
-        status: "under_review",
-        time: "6 hours ago",
-        user: "Captain Sharma"
-      },
-      {
-        id: 4,
-        type: "action_overdue",
-        title: "Weekly Action Overdue",
-        description: "INS Mumbai - Hull Compartment C-302",
-        status: "overdue",
-        time: "3 days ago",
-        user: "System Alert"
-      }
-    ],
-    '90d': [
-      {
-        id: 1,
-        type: "survey_submitted",
-        title: "Quarterly Survey Submitted",
-        description: "INS Vikrant - Q4 2024 Hull Survey",
-        status: "pending",
-        time: "2 hours ago",
-        user: "Lt. Commander Singh"
-      },
-      {
-        id: 2,
-        type: "plan_approved",
-        title: "Quarterly Plan Approved",
-        description: "INS Kolkata - Q4 Maintenance Plan",
-        status: "approved",
-        time: "4 hours ago", 
-        user: "Admiral Nair"
-      },
-      {
-        id: 3,
-        type: "survey_reviewed",
-        title: "Survey Under Review",
-        description: "INS Chennai - Q4 2024 Hull Survey",
-        status: "under_review",
-        time: "6 hours ago",
-        user: "Captain Sharma"
-      },
-      {
-        id: 4,
-        type: "action_overdue",
-        title: "Quarterly Action Overdue",
-        description: "INS Mumbai - Hull Compartment C-302",
-        status: "overdue",
-        time: "1 week ago",
-        user: "System Alert"
-      }
-    ]
-  };
-
-  // Upcoming tasks data for different time periods
-  const taskDataSets = {
-    '7d': [
-      {
-        id: 1,
-        title: "Daily Hull Inspection - INS Vikrant",
-        vessel: "INS Vikrant",
-        dueDate: "Today, 4:00 PM",
-        priority: "high"
-      },
-      {
-        id: 2,
-        title: "Emergency Repair Review - INS Shivalik", 
-        vessel: "INS Shivalik",
-        dueDate: "Tomorrow, 10:00 AM",
-        priority: "medium"
-      },
-      {
-        id: 3,
-        title: "Daily Equipment Check",
-        vessel: "INS Kolkata",
-        dueDate: "Tomorrow, 2:00 PM",
-        priority: "low"
-      }
-    ],
-    '30d': [
-      {
-        id: 1,
-        title: "Weekly Survey Review - INS Vikrant",
-        vessel: "INS Vikrant",
-        dueDate: "This Week",
-        priority: "high"
-      },
-      {
-        id: 2,
-        title: "Monthly Plan Approval - INS Shivalik", 
-        vessel: "INS Shivalik",
-        dueDate: "Next Week",
-        priority: "medium"
-      },
-      {
-        id: 3,
-        title: "Monthly Equipment Inspection",
-        vessel: "INS Kolkata",
-        dueDate: "Dec 20, 2024",
-        priority: "low"
-      }
-    ],
-    '90d': [
-      {
-        id: 1,
-        title: "Quarterly Survey Review - INS Vikrant",
-        vessel: "INS Vikrant",
-        dueDate: "This Month",
-        priority: "high"
-      },
-      {
-        id: 2,
-        title: "Quarterly Plan Approval - INS Shivalik", 
-        vessel: "INS Shivalik",
-        dueDate: "Next Month",
-        priority: "medium"
-      },
-      {
-        id: 3,
-        title: "Q1 2025 Survey Planning",
-        vessel: "INS Kolkata",
-        dueDate: "Dec 15, 2024",
-        priority: "low"
-      }
-    ]
-  };
-
-  const recentActivity = activityDataSets[selectedPeriod as keyof typeof activityDataSets];
-  const upcomingTasks = taskDataSets[selectedPeriod as keyof typeof taskDataSets];
-
-  const getStatusBadge = (status: string) => {
-    switch (status) {
-      case 'approved':
-        return <Badge className="status-approved">Approved</Badge>;
-      case 'pending':
-        return <Badge className="status-pending">Pending</Badge>;
-      case 'under_review':
-        return <Badge className="status-pending">Under Review</Badge>;
-      case 'overdue':
-        return <Badge className="status-rejected">Overdue</Badge>;
-      default:
-        return <Badge className="status-draft">Draft</Badge>;
+  // New chart data for different time periods
+  const newChartDataSets = {
+    '7d': {
+      donutData: [
+        { name: "Operational", value: 85, color: "#00809D" },
+        { name: "Maintenance", value: 10, color: "#00A8CC" },
+        { name: "Repair", value: 3, color: "#4ECDC4" },
+        { name: "Out of Service", value: 2, color: "#FECA57" }
+      ],
+      lineData: [
+        { day: "Mon", hull_inspections: 12, maintenance_tasks: 8, repairs: 2 },
+        { day: "Tue", hull_inspections: 15, maintenance_tasks: 6, repairs: 1 },
+        { day: "Wed", hull_inspections: 18, maintenance_tasks: 9, repairs: 3 },
+        { day: "Thu", hull_inspections: 14, maintenance_tasks: 7, repairs: 1 },
+        { day: "Fri", hull_inspections: 16, maintenance_tasks: 5, repairs: 2 },
+        { day: "Sat", hull_inspections: 8, maintenance_tasks: 3, repairs: 0 },
+        { day: "Sun", hull_inspections: 6, maintenance_tasks: 2, repairs: 0 }
+      ]
+    },
+    '30d': {
+      donutData: [
+        { name: "Operational", value: 78, color: "#00809D" },
+        { name: "Maintenance", value: 15, color: "#00A8CC" },
+        { name: "Repair", value: 5, color: "#4ECDC4" },
+        { name: "Out of Service", value: 2, color: "#FECA57" }
+      ],
+      lineData: [
+        { week: "Week 1", hull_inspections: 45, maintenance_tasks: 28, repairs: 8 },
+        { week: "Week 2", hull_inspections: 52, maintenance_tasks: 32, repairs: 6 },
+        { week: "Week 3", hull_inspections: 48, maintenance_tasks: 25, repairs: 9 },
+        { week: "Week 4", hull_inspections: 55, maintenance_tasks: 30, repairs: 7 }
+      ]
+    },
+    '90d': {
+      donutData: [
+        { name: "Operational", value: 72, color: "#00809D" },
+        { name: "Maintenance", value: 18, color: "#00A8CC" },
+        { name: "Repair", value: 7, color: "#4ECDC4" },
+        { name: "Out of Service", value: 3, color: "#FECA57" }
+      ],
+      lineData: [
+        { month: "Month 1", hull_inspections: 180, maintenance_tasks: 95, repairs: 28 },
+        { month: "Month 2", hull_inspections: 195, maintenance_tasks: 110, repairs: 32 },
+        { month: "Month 3", hull_inspections: 210, maintenance_tasks: 125, repairs: 35 }
+      ]
     }
   };
 
-  const getPriorityColor = (priority: string) => {
-    switch (priority) {
-      case 'high':
-        return 'text-destructive';
-      case 'medium':
-        return 'text-warning';
-      case 'low':
-        return 'text-muted-foreground';
-      default:
-        return 'text-foreground';
-    }
-  };
+  const { donutData, lineData } = newChartDataSets[selectedPeriod as keyof typeof newChartDataSets];
+
+
 
   return (
     <div className="p-6 space-y-6 bg-background">
@@ -428,10 +256,10 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Fleet Trend Bar Chart */}
         <Card className="p-6 bg-gradient-to-br from-background to-muted/20 border-l-4 border-l-[#00809D] transition-all duration-500">
-          <h2 className="text-xl font-semibold text-foreground mb-4">
+          <h2 className="text-xl font-semibold text-foreground mb-6">
             Fleet Trend ({selectedPeriod === '7d' ? 'Last 7 Days' : selectedPeriod === '30d' ? 'Last 4 Weeks' : 'Last 3 Months'})
           </h2>
-          <ResponsiveContainer width="100%" height={300}>
+          <ResponsiveContainer width="100%" height={320}>
             <BarChart data={barData} key={selectedPeriod}>
               <XAxis dataKey="month" />
               <YAxis />
@@ -446,148 +274,130 @@ export default function Dashboard() {
 
         {/* Fleet Distribution Pie Chart */}
         <Card className="p-6 bg-gradient-to-br from-background to-muted/20 border-l-4 border-l-[#4ECDC4] transition-all duration-500">
-          <h2 className="text-xl font-semibold text-foreground mb-4">Vessel Status Distribution</h2>
-          <ResponsiveContainer width="100%" height={300}>
+          <h2 className="text-xl font-semibold text-foreground mb-6">Vessel Status Distribution</h2>
+          <ResponsiveContainer width="100%" height={320}>
             <PieChart key={selectedPeriod}>
               <Pie
                 data={pieData}
                 dataKey="value"
                 nameKey="name"
                 cx="50%"
-                cy="50%"
-                outerRadius={100}
+                cy="45%"
+                outerRadius={90}
                 fill="#00809D"
-                label
+                label={({ name, value }) => `${name}: ${value}`}
+                labelLine={false}
               >
                 {pieData.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={COLORS[index]} />
                 ))}
               </Pie>
-              <Tooltip />
-              <Legend />
+              <Tooltip 
+                formatter={(value: any, name: any) => [`${value}`, name]}
+                labelStyle={{ color: '#00809D', fontWeight: 'bold' }}
+              />
+              <Legend 
+                verticalAlign="bottom" 
+                height={36}
+                formatter={(value) => <span style={{ color: '#00809D', fontWeight: 'bold' }}>{value}</span>}
+              />
             </PieChart>
           </ResponsiveContainer>
         </Card>
       </div>
 
-      {/* Main Content Grid */}
+      {/* New Charts Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Recent Activity */}
-        <Card className="p-6 bg-gradient-to-br from-background to-muted/20 border-l-4 border-l-[#00809D]">
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-[#00809D] rounded-lg flex items-center justify-center">
-                <FileText className="h-4 w-4 text-white" />
-              </div>
-              <h2 className="text-xl font-semibold text-foreground">Recent Activity</h2>
-            </div>
-            <Button variant="outline" size="sm" className="hover:bg-[#00809D] hover:text-white transition-colors">
-              View All
-            </Button>
-          </div>
-          
-          <div className="space-y-3">
-            {recentActivity.map((activity, index) => (
-              <div key={activity.id} className="group relative">
-                <div className="flex items-start gap-4 p-4 bg-white/50 rounded-xl border border-muted/50 hover:bg-white hover:shadow-md transition-all duration-300 hover:scale-[1.02]">
-                  {/* Timeline indicator */}
-                  <div className="flex flex-col items-center">
-                    <div className="w-10 h-10 bg-gradient-to-br from-[#00809D] to-[#00A8CC] rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
-                      {activity.type === 'survey_submitted' && <FileText className="h-5 w-5 text-white" />}
-                      {activity.type === 'plan_approved' && <CheckCircle className="h-5 w-5 text-white" />}
-                      {activity.type === 'survey_reviewed' && <Clock className="h-5 w-5 text-white" />}
-                      {activity.type === 'action_overdue' && <AlertTriangle className="h-5 w-5 text-white" />}
-                    </div>
-                    {index < recentActivity.length - 1 && (
-                      <div className="w-0.5 h-8 bg-gradient-to-b from-[#00809D] to-transparent mt-2"></div>
-                    )}
-                  </div>
-                  
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between gap-2 mb-2">
-                      <h3 className="font-semibold text-foreground text-sm group-hover:text-[#00809D] transition-colors">
-                        {activity.title}
-                      </h3>
-                      <div className="flex items-center gap-2">
-                        {getStatusBadge(activity.status)}
-                      </div>
-                    </div>
-                    <p className="text-sm text-muted-foreground mb-2 leading-relaxed">{activity.description}</p>
-                    <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                      <div className="flex items-center gap-1">
-                        <Users className="h-3 w-3" />
-                        <span>{activity.user}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Clock className="h-3 w-3" />
-                        <span>{activity.time}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+        {/* Fleet Status Donut Chart */}
+        <Card className="p-6 bg-gradient-to-br from-background to-muted/20 border-l-4 border-l-[#45B7D1] transition-all duration-500">
+          <h2 className="text-xl font-semibold text-foreground mb-6">
+            Fleet Status Distribution ({selectedPeriod === '7d' ? 'Last 7 Days' : selectedPeriod === '30d' ? 'Last 30 Days' : 'Last 90 Days'})
+          </h2>
+          <ResponsiveContainer width="100%" height={320}>
+            <PieChart key={selectedPeriod}>
+              <Pie
+                data={donutData}
+                dataKey="value"
+                nameKey="name"
+                cx="50%"
+                cy="45%"
+                innerRadius={50}
+                outerRadius={100}
+                fill="#00809D"
+                label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                labelLine={false}
+              >
+                {donutData.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={entry.color} />
+                ))}
+              </Pie>
+              <Tooltip 
+                formatter={(value: any) => [`${value}%`, 'Percentage']}
+                labelStyle={{ color: '#00809D', fontWeight: 'bold' }}
+              />
+              <Legend 
+                verticalAlign="bottom" 
+                height={36}
+                formatter={(value) => <span style={{ color: '#00809D', fontWeight: 'bold' }}>{value}</span>}
+              />
+            </PieChart>
+          </ResponsiveContainer>
         </Card>
 
-        {/* Upcoming Tasks */}
-        <Card className="p-6 bg-gradient-to-br from-background to-muted/20 border-l-4 border-l-[#4ECDC4]">
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-[#4ECDC4] rounded-lg flex items-center justify-center">
-                <Calendar className="h-4 w-4 text-white" />
-              </div>
-              <h2 className="text-xl font-semibold text-foreground">Upcoming Tasks</h2>
-            </div>
-            <Badge variant="secondary" className="bg-[#4ECDC4]/20 text-[#4ECDC4] border-[#4ECDC4]/30 font-semibold">
-              {upcomingTasks.length}
-            </Badge>
-          </div>
-          
-          <div className="space-y-3">
-            {upcomingTasks.map((task) => (
-              <div key={task.id} className="group relative">
-                <div className="p-4 bg-white/50 rounded-xl border border-muted/50 hover:bg-white hover:shadow-md transition-all duration-300 hover:scale-[1.02] cursor-pointer">
-                  <div className="flex items-start justify-between gap-2 mb-3">
-                    <h3 className="font-semibold text-foreground text-sm leading-tight group-hover:text-[#4ECDC4] transition-colors">
-                      {task.title}
-                    </h3>
-                    <div className="flex items-center gap-2">
-                      <span className={`px-2 py-1 text-xs font-medium rounded-full capitalize ${
-                        task.priority === 'high' ? 'bg-red-100 text-red-700 border border-red-200' :
-                        task.priority === 'medium' ? 'bg-yellow-100 text-yellow-700 border border-yellow-200' :
-                        'bg-green-100 text-green-700 border border-green-200'
-                      }`}>
-                        {task.priority}
-                      </span>
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                      <Ship className="h-3 w-3" />
-                      <span className="font-medium">{task.vessel}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                      <Calendar className="h-3 w-3" />
-                      <span>{task.dueDate}</span>
-                    </div>
-                  </div>
-                  
-                  {/* Priority indicator line */}
-                  <div className={`absolute left-0 top-0 bottom-0 w-1 rounded-l-xl ${
-                    task.priority === 'high' ? 'bg-red-500' :
-                    task.priority === 'medium' ? 'bg-yellow-500' :
-                    'bg-green-500'
-                  }`}></div>
-                </div>
-              </div>
-            ))}
-          </div>
-          
-          <Button variant="outline" className="w-full mt-4 hover:bg-[#4ECDC4] hover:text-white transition-colors" size="sm">
-            View All Tasks
-          </Button>
+        {/* Hull Operations Trend Line Chart */}
+        <Card className="p-6 bg-gradient-to-br from-background to-muted/20 border-l-4 border-l-[#96CEB4] transition-all duration-500">
+          <h2 className="text-xl font-semibold text-foreground mb-6">
+            Hull Operations Trend ({selectedPeriod === '7d' ? 'Daily' : selectedPeriod === '30d' ? 'Weekly' : 'Monthly'})
+          </h2>
+          <ResponsiveContainer width="100%" height={320}>
+            <LineChart data={lineData} key={selectedPeriod}>
+              <XAxis 
+                dataKey={selectedPeriod === '7d' ? 'day' : selectedPeriod === '30d' ? 'week' : 'month'} 
+                stroke="#00809D"
+                fontSize={12}
+              />
+              <YAxis stroke="#00809D" fontSize={12} />
+              <Tooltip 
+                contentStyle={{
+                  backgroundColor: '#f8fafc',
+                  border: '1px solid #00809D',
+                  borderRadius: '8px',
+                  color: '#00809D'
+                }}
+                labelStyle={{ color: '#00809D', fontWeight: 'bold' }}
+              />
+              <Legend 
+                formatter={(value) => <span style={{ color: '#00809D', fontWeight: 'bold' }}>{value}</span>}
+              />
+              <Line 
+                type="monotone" 
+                dataKey="hull_inspections" 
+                stroke="#00809D" 
+                strokeWidth={3}
+                dot={{ fill: '#00809D', strokeWidth: 2, r: 6 }}
+                activeDot={{ r: 8, stroke: '#00809D', strokeWidth: 2 }}
+                name="Hull Inspections"
+              />
+              <Line 
+                type="monotone" 
+                dataKey="maintenance_tasks" 
+                stroke="#00A8CC" 
+                strokeWidth={3}
+                dot={{ fill: '#00A8CC', strokeWidth: 2, r: 6 }}
+                activeDot={{ r: 8, stroke: '#00A8CC', strokeWidth: 2 }}
+                name="Maintenance Tasks"
+              />
+              <Line 
+                type="monotone" 
+                dataKey="repairs" 
+                stroke="#4ECDC4" 
+                strokeWidth={3}
+                dot={{ fill: '#4ECDC4', strokeWidth: 2, r: 6 }}
+                activeDot={{ r: 8, stroke: '#4ECDC4', strokeWidth: 2 }}
+                name="Repairs"
+              />
+            </LineChart>
+          </ResponsiveContainer>
         </Card>
       </div>
 
